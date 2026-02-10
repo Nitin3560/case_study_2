@@ -1,0 +1,9 @@
+baselines:
+  static:
+    assignment: "round_robin"
+    routing: "direct_or_hold"
+
+  greedy:
+    assignment: "nearest_feasible"
+    routing: "best_link_or_relay"
+    relay_neighbors_max: 3

@@ -1,0 +1,13 @@
+marl:
+  algo: "mappo"
+  total_steps: 2_000_000
+  rollout_steps: 2048
+  gamma: 0.99
+  gae_lambda: 0.95
+  lr: 3.0e-4
+  clip_range: 0.2
+  entropy_coef: 0.01
+  value_coef: 0.5
+  max_grad_norm: 0.5
+
+  # NOTE: training scripts are stubs initially.

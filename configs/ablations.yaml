@@ -1,0 +1,12 @@
+ablations:
+  marl_task_only:
+    learn_task: true
+    learn_routing: false
+
+  marl_routing_only:
+    learn_task: false
+    learn_routing: true
+
+  marl_full:
+    learn_task: true
+    learn_routing: true
