@@ -1,0 +1,4292 @@
+[
+  {
+    "seed": 1,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 10.0,
+    "task_sensed_pct": 0.0,
+    "user_coverage_pct": 10.0,
+    "throughput_bps": 600.0,
+    "mean_aoi_steps": 223.33333333333334,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 109.45555555555521,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 22500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      600.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      22500,
+      0
+    ],
+    "bytes_generated_total": 35000,
+    "bytes_dropped_total": 265500,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.9333333333333333,
+      0.9733333333333334,
+      0.9333333333333333,
+      0.26666666666666666,
+      0.15,
+      0.49333333333333335
+    ],
+    "steps_base_in_range_frac": [
+      0.05,
+      0.02666666666666667,
+      0.043333333333333335,
+      0.03,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.023333333333333334,
+      0.013333333333333334,
+      0.02,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.02666666666666667,
+      0.013333333333333334,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.45666666666666667,
+      0.0,
+      0.46,
+      0.0,
+      0.15,
+      0.24333333333333335
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.72802097161611,
+    "total_buffer_bytes_time_avg": 8875.0,
+    "r_task_total": 0.0,
+    "r_delivery_total": 450.0,
+    "r_gen_total": 350.0,
+    "r_aoi_total": -164.18333333333334,
+    "r_energy_total": -4.338000004577663,
+    "r_shaping_total": 0.5512060880661007,
+    "r_sense_total": 0.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -180.0,
+    "r_base_total": 45.0,
+    "r_buffer_total": -1331.25,
+    "mean_energy_j": 885.0,
+    "min_energy_j": 810.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 1
+    }
+  },
+  {
+    "seed": 2,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 20.0,
+    "task_sensed_pct": 20.0,
+    "user_coverage_pct": 20.0,
+    "throughput_bps": 1240.0,
+    "mean_aoi_steps": 232.5,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 114.72579365079366,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 46500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1240.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      46500,
+      0
+    ],
+    "bytes_generated_total": 60800,
+    "bytes_dropped_total": 407700,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.94,
+      0.98,
+      0.9333333333333333,
+      0.7,
+      0.4,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.043333333333333335,
+      0.02,
+      0.043333333333333335,
+      0.03,
+      1.0,
+      0.02666666666666667
+    ],
+    "steps_comm_to_base_frac": [
+      0.02,
+      0.01,
+      0.02,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.023333333333333334,
+      0.01,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.46,
+      0.0,
+      0.46,
+      0.3466666666666667,
+      0.39666666666666667,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.48214783191681,
+    "total_buffer_bytes_time_avg": 10651.666666666666,
+    "r_task_total": 0.0,
+    "r_delivery_total": 930.0,
+    "r_gen_total": 608.0,
+    "r_aoi_total": -172.0886904761905,
+    "r_energy_total": -4.363200004577654,
+    "r_shaping_total": 3.31716918945313,
+    "r_sense_total": 12.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -123.5,
+    "r_base_total": 120.0,
+    "r_buffer_total": -1597.7500000000036,
+    "mean_energy_j": 863.999755859375,
+    "min_energy_j": 713.99853515625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 2
+    }
+  },
+  {
+    "seed": 3,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 30.0,
+    "task_sensed_pct": 0.0,
+    "user_coverage_pct": 30.0,
+    "throughput_bps": 666.6666666666666,
+    "mean_aoi_steps": 222.85714285714286,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 104.30238095238069,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 25000,
+    "throughput_bps_per_agent": [
+      0.0,
+      13.333333333333334,
+      0.0,
+      0.0,
+      653.3333333333334,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      500,
+      0,
+      0,
+      24500,
+      0
+    ],
+    "bytes_generated_total": 35000,
+    "bytes_dropped_total": 298000,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.9466666666666667,
+      0.9766666666666667,
+      0.92,
+      0.7,
+      0.18,
+      0.0
+    ],
+    "steps_base_in_range_frac": [
+      0.043333333333333335,
+      0.03,
+      0.04666666666666667,
+      0.023333333333333334,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.02,
+      0.013333333333333334,
+      0.023333333333333334,
+      0.01,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.023333333333333334,
+      0.016666666666666666,
+      0.023333333333333334,
+      0.013333333333333334,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.46,
+      0.0,
+      0.45666666666666667,
+      0.0,
+      0.18,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.66815182367961,
+    "total_buffer_bytes_time_avg": 8852.0,
+    "r_task_total": 0.0,
+    "r_delivery_total": 500.0,
+    "r_gen_total": 350.0,
+    "r_aoi_total": -156.45357142857145,
+    "r_energy_total": -4.3400000000000265,
+    "r_shaping_total": 1.4576595306396485,
+    "r_sense_total": 0.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -180.0,
+    "r_base_total": 56.0,
+    "r_buffer_total": -1327.8000000000002,
+    "mean_energy_j": 883.3333231608073,
+    "min_energy_j": 801.9999389648438,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 3
+    }
+  },
+  {
+    "seed": 4,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 10.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 10.0,
+    "throughput_bps": 66.66666666666667,
+    "mean_aoi_steps": 216.66666666666666,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 106.7666666666669,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 2500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      66.66666666666667,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      2500,
+      0
+    ],
+    "bytes_generated_total": 15000,
+    "bytes_dropped_total": 390400,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.96,
+      0.9533333333333334,
+      0.9266666666666666,
+      0.7,
+      0.016666666666666666,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.043333333333333335,
+      0.03333333333333333,
+      0.05333333333333334,
+      0.03,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.02,
+      0.016666666666666666,
+      0.02666666666666667,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.023333333333333334,
+      0.016666666666666666,
+      0.02666666666666667,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.46,
+      0.47333333333333333,
+      0.4533333333333333,
+      0.3466666666666667,
+      0.016666666666666666,
+      0.25
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.48513188521067,
+    "total_buffer_bytes_time_avg": 9941.666666666666,
+    "r_task_total": 0.0,
+    "r_delivery_total": 50.0,
+    "r_gen_total": 150.0,
+    "r_aoi_total": -160.15000000000003,
+    "r_energy_total": -4.334000004577664,
+    "r_shaping_total": 1.3220413208007809,
+    "r_sense_total": 24.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -147.0,
+    "r_base_total": 6.0,
+    "r_buffer_total": -1491.25,
+    "mean_energy_j": 888.3333333333334,
+    "min_energy_j": 870.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 4
+    }
+  },
+  {
+    "seed": 5,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 20.0,
+    "task_sensed_pct": 0.0,
+    "user_coverage_pct": 20.0,
+    "throughput_bps": 1240.0,
+    "mean_aoi_steps": 232.5,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 114.72579365079366,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 46500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1240.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      46500,
+      0
+    ],
+    "bytes_generated_total": 58300,
+    "bytes_dropped_total": 419200,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.94,
+      0.96,
+      0.9266666666666666,
+      0.7,
+      0.4,
+      0.0
+    ],
+    "steps_base_in_range_frac": [
+      0.03666666666666667,
+      0.03333333333333333,
+      0.04,
+      0.03,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.016666666666666666,
+      0.016666666666666666,
+      0.02,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.02,
+      0.016666666666666666,
+      0.02,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.4633333333333333,
+      0.0,
+      0.46,
+      0.35,
+      0.39666666666666667,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.188152486483254,
+    "total_buffer_bytes_time_avg": 9278.333333333334,
+    "r_task_total": 0.0,
+    "r_delivery_total": 930.0,
+    "r_gen_total": 583.0,
+    "r_aoi_total": -172.0886904761905,
+    "r_energy_total": -4.357200004577654,
+    "r_shaping_total": 6.544766616821281,
+    "r_sense_total": 0.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -163.0,
+    "r_base_total": 120.0,
+    "r_buffer_total": -1391.7500000000025,
+    "mean_energy_j": 868.999755859375,
+    "min_energy_j": 713.99853515625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 5
+    }
+  },
+  {
+    "seed": 6,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 10.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 10.0,
+    "throughput_bps": 1000.0,
+    "mean_aoi_steps": 216.66666666666666,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 110.0285714285718,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 37500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1000.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      37500,
+      0
+    ],
+    "bytes_generated_total": 50000,
+    "bytes_dropped_total": 414400,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.9266666666666666,
+      0.9666666666666667,
+      0.92,
+      0.7,
+      0.25,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.056666666666666664,
+      0.03,
+      0.04666666666666667,
+      0.03333333333333333,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.02666666666666667,
+      0.013333333333333334,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.03,
+      0.016666666666666666,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.4533333333333333,
+      0.47333333333333333,
+      0.45666666666666667,
+      0.3466666666666667,
+      0.25,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.3614563035965,
+    "total_buffer_bytes_time_avg": 10005.0,
+    "r_task_total": 0.0,
+    "r_delivery_total": 750.0,
+    "r_gen_total": 500.0,
+    "r_aoi_total": -165.04285714285717,
+    "r_energy_total": -4.362000004577661,
+    "r_shaping_total": 8.404174375534064,
+    "r_sense_total": 24.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -149.0,
+    "r_base_total": 75.0,
+    "r_buffer_total": -1500.75,
+    "mean_energy_j": 865.0,
+    "min_energy_j": 750.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 6
+    }
+  },
+  {
+    "seed": 7,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 10.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 10.0,
+    "throughput_bps": 600.0,
+    "mean_aoi_steps": 223.33333333333334,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 109.45555555555521,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 22500,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      600.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      22500,
+      0
+    ],
+    "bytes_generated_total": 35000,
+    "bytes_dropped_total": 354000,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.8633333333333333,
+      0.9733333333333334,
+      0.96,
+      0.7,
+      0.15,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.04666666666666667,
+      0.02666666666666667,
+      0.043333333333333335,
+      0.03,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.023333333333333334,
+      0.013333333333333334,
+      0.02,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.023333333333333334,
+      0.013333333333333334,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.43,
+      0.48,
+      0.46,
+      0.35,
+      0.15,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.668352677027386,
+    "total_buffer_bytes_time_avg": 9868.333333333334,
+    "r_task_total": 0.0,
+    "r_delivery_total": 450.0,
+    "r_gen_total": 350.0,
+    "r_aoi_total": -164.18333333333334,
+    "r_energy_total": -4.350000009155299,
+    "r_shaping_total": -3.1614986419677784,
+    "r_sense_total": 24.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -150.0,
+    "r_base_total": 46.0,
+    "r_buffer_total": -1480.25,
+    "mean_energy_j": 875.0,
+    "min_energy_j": 810.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 7
+    }
+  },
+  {
+    "seed": 8,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 20.0,
+    "task_sensed_pct": 30.0,
+    "user_coverage_pct": 20.0,
+    "throughput_bps": 213.33333333333334,
+    "mean_aoi_steps": 206.25,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 102.41071428571418,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 8000,
+    "throughput_bps_per_agent": [
+      26.666666666666668,
+      13.333333333333334,
+      0.0,
+      0.0,
+      173.33333333333334,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      1000,
+      500,
+      0,
+      0,
+      6500,
+      0
+    ],
+    "bytes_generated_total": 20500,
+    "bytes_dropped_total": 368100,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.9733333333333334,
+      0.9766666666666667,
+      0.92,
+      0.62,
+      0.043333333333333335,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.03333333333333333,
+      0.03,
+      0.05333333333333334,
+      0.02666666666666667,
+      1.0,
+      0.03
+    ],
+    "steps_comm_to_base_frac": [
+      0.016666666666666666,
+      0.013333333333333334,
+      0.02666666666666667,
+      0.013333333333333334,
+      0.5,
+      0.013333333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.016666666666666666,
+      0.016666666666666666,
+      0.02666666666666667,
+      0.013333333333333334,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.4633333333333333,
+      0.0,
+      0.4533333333333333,
+      0.31,
+      0.043333333333333335,
+      0.24666666666666667
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.64970529238383,
+    "total_buffer_bytes_time_avg": 9826.666666666666,
+    "r_task_total": 0.0,
+    "r_delivery_total": 160.0,
+    "r_gen_total": 205.0,
+    "r_aoi_total": -153.61607142857142,
+    "r_energy_total": -4.3353999954223905,
+    "r_shaping_total": 1.3268890380859375,
+    "r_sense_total": 18.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -151.5,
+    "r_base_total": 17.0,
+    "r_buffer_total": -1474.0,
+    "mean_energy_j": 887.1666666666666,
+    "min_energy_j": 874.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 8
+    }
+  },
+  {
+    "seed": 9,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 10.0,
+    "task_sensed_pct": 50.0,
+    "user_coverage_pct": 10.0,
+    "throughput_bps": 640.0,
+    "mean_aoi_steps": 216.66666666666666,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 109.85714285714322,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 24000,
+    "throughput_bps_per_agent": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      640.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      0,
+      0,
+      0,
+      0,
+      24000,
+      0
+    ],
+    "bytes_generated_total": 36500,
+    "bytes_dropped_total": 330800,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.9466666666666667,
+      0.9533333333333334,
+      0.9333333333333333,
+      0.7,
+      0.16,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.043333333333333335,
+      0.03333333333333333,
+      0.04,
+      0.03333333333333333,
+      1.0,
+      0.04
+    ],
+    "steps_comm_to_base_frac": [
+      0.02,
+      0.016666666666666666,
+      0.02,
+      0.016666666666666666,
+      0.5,
+      0.02
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.023333333333333334,
+      0.016666666666666666,
+      0.02,
+      0.016666666666666666,
+      0.5,
+      0.02
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.46,
+      0.47333333333333333,
+      0.46,
+      0.0,
+      0.16,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.754688065846764,
+    "total_buffer_bytes_time_avg": 9996.666666666666,
+    "r_task_total": 0.0,
+    "r_delivery_total": 480.0,
+    "r_gen_total": 365.0,
+    "r_aoi_total": -164.78571428571433,
+    "r_energy_total": -4.354199995422389,
+    "r_shaping_total": 1.3078149795532228,
+    "r_sense_total": 30.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -147.5,
+    "r_base_total": 48.0,
+    "r_buffer_total": -1499.5,
+    "mean_energy_j": 871.5,
+    "min_energy_j": 804.0,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 9
+    }
+  },
+  {
+    "seed": 10,
+    "method": "static",
+    "steps": 300,
+    "task_completion_pct": 30.0,
+    "task_sensed_pct": 0.0,
+    "user_coverage_pct": 30.0,
+    "throughput_bps": 1826.6666666666667,
+    "mean_aoi_steps": 205.71428571428572,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 108.0126190476192,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 68500,
+    "throughput_bps_per_agent": [
+      13.333333333333334,
+      13.333333333333334,
+      0.0,
+      0.0,
+      1800.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      500,
+      500,
+      0,
+      0,
+      67500,
+      0
+    ],
+    "bytes_generated_total": 80300,
+    "bytes_dropped_total": 336200,
+    "bytes_relayed_total": 0,
+    "steps_buffer_nonempty_frac": [
+      0.97,
+      0.97,
+      0.92,
+      0.3,
+      0.6,
+      0.0
+    ],
+    "steps_base_in_range_frac": [
+      0.03666666666666667,
+      0.03333333333333333,
+      0.04666666666666667,
+      0.03333333333333333,
+      1.0,
+      0.03333333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      0.016666666666666666,
+      0.016666666666666666,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.02,
+      0.016666666666666666,
+      0.023333333333333334,
+      0.016666666666666666,
+      0.5,
+      0.016666666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.4633333333333333,
+      0.4766666666666667,
+      0.45666666666666667,
+      0.15,
+      0.5966666666666667,
+      0.0
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 47.16154553572337,
+    "total_buffer_bytes_time_avg": 8861.666666666666,
+    "r_task_total": 0.0,
+    "r_delivery_total": 1370.0,
+    "r_gen_total": 803.0,
+    "r_aoi_total": -162.01892857142857,
+    "r_energy_total": -4.374800000000008,
+    "r_shaping_total": 1.4147985458374048,
+    "r_sense_total": 0.0,
+    "r_idle_total": 0.0,
+    "r_mode_total": -176.0,
+    "r_base_total": 183.0,
+    "r_buffer_total": -1329.2500000000014,
+    "mean_energy_j": 854.3328755696615,
+    "min_energy_j": 629.9972534179688,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 10
+    }
+  },
+  {
+    "seed": 1,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 70.0,
+    "task_sensed_pct": 30.0,
+    "user_coverage_pct": 70.0,
+    "throughput_bps": 7125.333333333333,
+    "mean_aoi_steps": 230.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 118.26,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 267200,
+    "throughput_bps_per_agent": [
+      4522.666666666667,
+      2602.6666666666665,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      169600,
+      97600,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 269100,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 263500,
+    "steps_buffer_nonempty_frac": [
+      0.8566666666666667,
+      0.54,
+      0.48333333333333334,
+      0.5033333333333333,
+      0.4666666666666667,
+      0.5033333333333333
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9333333333333333,
+      1.0
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.8533333333333334,
+      0.5366666666666666,
+      0.48333333333333334,
+      0.5033333333333333,
+      0.4666666666666667,
+      0.5033333333333333
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 12.56784351348877,
+    "total_buffer_bytes_time_avg": 2922.0,
+    "r_task_total": 300.0,
+    "r_delivery_total": 5344.0,
+    "r_gen_total": 2691.0,
+    "r_aoi_total": -177.39000000000001,
+    "r_energy_total": -4.7439600000000075,
+    "r_shaping_total": -23.16313276290891,
+    "r_sense_total": 18.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -331.0,
+    "r_base_total": 997.0,
+    "r_buffer_total": -438.2999999999996,
+    "mean_energy_j": 546.6989593505859,
+    "min_energy_j": 221.59542846679688,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 1
+    }
+  },
+  {
+    "seed": 2,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 10.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 7400.0,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 54.833333333333336,
+    "p95_aoi_time_avg": 72.1,
+    "total_bytes_delivered": 277500,
+    "throughput_bps_per_agent": [
+      4773.333333333333,
+      2626.6666666666665,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      179000,
+      98500,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 282400,
+    "bytes_dropped_total": 700,
+    "bytes_relayed_total": 277100,
+    "steps_buffer_nonempty_frac": [
+      0.89,
+      0.5333333333333333,
+      0.49,
+      0.49,
+      0.49,
+      0.52
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.8066666666666666,
+      0.87,
+      0.8833333333333333,
+      0.9366666666666666
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.8866666666666667,
+      0.53,
+      0.49,
+      0.4866666666666667,
+      0.4866666666666667,
+      0.5166666666666667
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 13.977823864618937,
+    "total_buffer_bytes_time_avg": 3135.0,
+    "r_task_total": 100.0,
+    "r_delivery_total": 5550.0,
+    "r_gen_total": 2824.0,
+    "r_aoi_total": -82.24999999999999,
+    "r_energy_total": -4.757080009155271,
+    "r_shaping_total": -10.03530730009077,
+    "r_sense_total": 6.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -295.5,
+    "r_base_total": 927.0,
+    "r_buffer_total": -470.25000000000017,
+    "mean_energy_j": 535.765276590983,
+    "min_energy_j": 183.9941864013672,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 2
+    }
+  },
+  {
+    "seed": 3,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 20.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 6226.666666666667,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 49.43333333333333,
+    "p95_aoi_time_avg": 59.36,
+    "total_bytes_delivered": 233500,
+    "throughput_bps_per_agent": [
+      4568.0,
+      1658.6666666666667,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      171300,
+      62200,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 236200,
+    "bytes_dropped_total": 700,
+    "bytes_relayed_total": 223800,
+    "steps_buffer_nonempty_frac": [
+      0.8766666666666667,
+      0.4166666666666667,
+      0.43666666666666665,
+      0.44333333333333336,
+      0.4,
+      0.4033333333333333
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.8866666666666667,
+      0.8766666666666667,
+      0.8933333333333333,
+      0.8766666666666667
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.8733333333333333,
+      0.41333333333333333,
+      0.43333333333333335,
+      0.44333333333333336,
+      0.4,
+      0.4033333333333333
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 12.18633459130923,
+    "total_buffer_bytes_time_avg": 2361.6666666666665,
+    "r_task_total": 200.0,
+    "r_delivery_total": 4670.0,
+    "r_gen_total": 2362.0,
+    "r_aoi_total": -74.15,
+    "r_energy_total": -4.682240000000008,
+    "r_shaping_total": -6.2465999722480845,
+    "r_sense_total": 12.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -317.5,
+    "r_base_total": 856.0,
+    "r_buffer_total": -354.24999999999994,
+    "mean_energy_j": 598.1327260335287,
+    "min_energy_j": 214.79708862304688,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 3
+    }
+  },
+  {
+    "seed": 4,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 90.0,
+    "task_sensed_pct": 30.0,
+    "user_coverage_pct": 90.0,
+    "throughput_bps": 6450.666666666667,
+    "mean_aoi_steps": 300.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 123.0,
+    "p95_aoi_time_avg": 147.125,
+    "total_bytes_delivered": 241900,
+    "throughput_bps_per_agent": [
+      5176.0,
+      1274.6666666666667,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      194100,
+      47800,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 246000,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 241600,
+    "steps_buffer_nonempty_frac": [
+      0.9433333333333334,
+      0.3,
+      0.4533333333333333,
+      0.48333333333333334,
+      0.5166666666666667,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.6466666666666666,
+      0.5433333333333333,
+      0.5533333333333333,
+      0.6866666666666666
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.94,
+      0.3,
+      0.4533333333333333,
+      0.48333333333333334,
+      0.5133333333333333,
+      0.49666666666666665
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 20.331028135617576,
+    "total_buffer_bytes_time_avg": 2997.6666666666665,
+    "r_task_total": 300.0,
+    "r_delivery_total": 4838.0,
+    "r_gen_total": 2460.0,
+    "r_aoi_total": -184.50000000000003,
+    "r_energy_total": -4.707200009155281,
+    "r_shaping_total": -5.28958959579468,
+    "r_sense_total": 20.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -319.0,
+    "r_base_total": 734.0,
+    "r_buffer_total": -449.65,
+    "mean_energy_j": 577.3317031860352,
+    "min_energy_j": 123.59318542480469,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 4
+    }
+  },
+  {
+    "seed": 5,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 60.0,
+    "task_sensed_pct": 10.0,
+    "user_coverage_pct": 60.0,
+    "throughput_bps": 8282.666666666666,
+    "mean_aoi_steps": 210.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 112.39333333333333,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 310600,
+    "throughput_bps_per_agent": [
+      4184.0,
+      4098.666666666667,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      156900,
+      153700,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 315400,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 309600,
+    "steps_buffer_nonempty_frac": [
+      0.8833333333333333,
+      0.86,
+      0.5333333333333333,
+      0.54,
+      0.54,
+      0.55
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.71,
+      0.68,
+      0.7133333333333334,
+      0.6833333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.88,
+      0.8566666666666667,
+      0.53,
+      0.5366666666666666,
+      0.5366666666666666,
+      0.55
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 17.004615915616352,
+    "total_buffer_bytes_time_avg": 3235.3333333333335,
+    "r_task_total": 100.0,
+    "r_delivery_total": 6212.0,
+    "r_gen_total": 3154.0,
+    "r_aoi_total": -168.59,
+    "r_energy_total": -4.809560000000003,
+    "r_shaping_total": -18.214042234420734,
+    "r_sense_total": 6.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -276.0,
+    "r_base_total": 994.0,
+    "r_buffer_total": -485.3000000000001,
+    "mean_energy_j": 492.0320231119792,
+    "min_energy_j": 272.39605712890625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 5
+    }
+  },
+  {
+    "seed": 6,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 30.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 6480.0,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 46.78333333333333,
+    "p95_aoi_time_avg": 60.02333333333333,
+    "total_bytes_delivered": 243000,
+    "throughput_bps_per_agent": [
+      3117.3333333333335,
+      3362.6666666666665,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      116900,
+      126100,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 245500,
+    "bytes_dropped_total": 500,
+    "bytes_relayed_total": 226600,
+    "steps_buffer_nonempty_frac": [
+      0.6233333333333333,
+      0.6566666666666666,
+      0.38,
+      0.38,
+      0.37333333333333335,
+      0.38666666666666666
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.7366666666666667,
+      0.74,
+      0.7266666666666667,
+      0.7333333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.62,
+      0.6533333333333333,
+      0.38,
+      0.38,
+      0.37333333333333335,
+      0.38333333333333336
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 17.353261760870616,
+    "total_buffer_bytes_time_avg": 2240.3333333333335,
+    "r_task_total": 300.0,
+    "r_delivery_total": 4860.0,
+    "r_gen_total": 2455.0,
+    "r_aoi_total": -70.17499999999998,
+    "r_energy_total": -4.47668001373292,
+    "r_shaping_total": -10.857918834686274,
+    "r_sense_total": 18.0,
+    "r_idle_total": -5.000000000000003,
+    "r_mode_total": -315.0,
+    "r_base_total": 780.0,
+    "r_buffer_total": -336.0500000000002,
+    "mean_energy_j": 769.4320780436198,
+    "min_energy_j": 395.59869384765625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 6
+    }
+  },
+  {
+    "seed": 7,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 50.0,
+    "task_sensed_pct": 10.0,
+    "user_coverage_pct": 50.0,
+    "throughput_bps": 7354.666666666667,
+    "mean_aoi_steps": 210.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 106.85166666666667,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 275800,
+    "throughput_bps_per_agent": [
+      4648.0,
+      2706.6666666666665,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      174300,
+      101500,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 279000,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 276800,
+    "steps_buffer_nonempty_frac": [
+      0.91,
+      0.6666666666666666,
+      0.5,
+      0.48,
+      0.48,
+      0.5066666666666667
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      1.0,
+      0.9,
+      1.0,
+      0.88
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.91,
+      0.6633333333333333,
+      0.49666666666666665,
+      0.4766666666666667,
+      0.4766666666666667,
+      0.5066666666666667
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 18.395102654298146,
+    "total_buffer_bytes_time_avg": 2755.6666666666665,
+    "r_task_total": 100.0,
+    "r_delivery_total": 5516.0,
+    "r_gen_total": 2790.0,
+    "r_aoi_total": -160.27749999999997,
+    "r_energy_total": -4.7554800000000155,
+    "r_shaping_total": -20.12959411144253,
+    "r_sense_total": 6.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -325.5,
+    "r_base_total": 999.0,
+    "r_buffer_total": -413.3500000000003,
+    "mean_energy_j": 537.099365234375,
+    "min_energy_j": 202.7955322265625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 7
+    }
+  },
+  {
+    "seed": 8,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 90.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 90.0,
+    "throughput_bps": 6890.666666666667,
+    "mean_aoi_steps": 90.0,
+    "p95_aoi_steps": 90.0,
+    "mean_aoi_time_avg": 46.5,
+    "p95_aoi_time_avg": 53.87,
+    "total_bytes_delivered": 258400,
+    "throughput_bps_per_agent": [
+      3413.3333333333335,
+      3477.3333333333335,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      128000,
+      130400,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 261700,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 249700,
+    "steps_buffer_nonempty_frac": [
+      0.7333333333333333,
+      0.7133333333333334,
+      0.43333333333333335,
+      0.45666666666666667,
+      0.44,
+      0.43333333333333335
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.7766666666666666,
+      0.73,
+      0.7033333333333334,
+      0.6833333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.73,
+      0.7133333333333334,
+      0.43,
+      0.4533333333333333,
+      0.44,
+      0.43
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 17.329660617510477,
+    "total_buffer_bytes_time_avg": 2471.6666666666665,
+    "r_task_total": 400.0,
+    "r_delivery_total": 5168.0,
+    "r_gen_total": 2617.0,
+    "r_aoi_total": -69.75000000000001,
+    "r_energy_total": -4.725679995422367,
+    "r_shaping_total": -16.60083656311032,
+    "r_sense_total": 26.0,
+    "r_idle_total": -0.35000000000000003,
+    "r_mode_total": -302.0,
+    "r_base_total": 822.0,
+    "r_buffer_total": -370.7500000000001,
+    "mean_energy_j": 561.9318237304688,
+    "min_energy_j": 378.39569091796875,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 8
+    }
+  },
+  {
+    "seed": 9,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 60.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 7160.0,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 34.57,
+    "p95_aoi_time_avg": 42.81,
+    "total_bytes_delivered": 268500,
+    "throughput_bps_per_agent": [
+      2992.0,
+      4168.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      112200,
+      156300,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 273300,
+    "bytes_dropped_total": 4500,
+    "bytes_relayed_total": 246000,
+    "steps_buffer_nonempty_frac": [
+      0.65,
+      0.7733333333333333,
+      0.38,
+      0.39666666666666667,
+      0.4166666666666667,
+      0.43333333333333335
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.9333333333333333,
+      0.7333333333333333,
+      0.73,
+      0.7466666666666667
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.6466666666666666,
+      0.77,
+      0.37666666666666665,
+      0.39666666666666667,
+      0.4166666666666667,
+      0.43
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 14.61959270397822,
+    "total_buffer_bytes_time_avg": 2668.6666666666665,
+    "r_task_total": 600.0,
+    "r_delivery_total": 5370.0,
+    "r_gen_total": 2733.0,
+    "r_aoi_total": -51.855,
+    "r_energy_total": -4.272199995422364,
+    "r_shaping_total": -8.228425240516671,
+    "r_sense_total": 36.0,
+    "r_idle_total": -2.3,
+    "r_mode_total": -289.5,
+    "r_base_total": 850.0,
+    "r_buffer_total": -400.29999999999995,
+    "mean_energy_j": 939.8313039143881,
+    "min_energy_j": 274.79327392578125,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 9
+    }
+  },
+  {
+    "seed": 10,
+    "method": "fixed_relay",
+    "steps": 300,
+    "task_completion_pct": 40.0,
+    "task_sensed_pct": 20.0,
+    "user_coverage_pct": 40.0,
+    "throughput_bps": 7960.0,
+    "mean_aoi_steps": 190.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 98.95,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 298500,
+    "throughput_bps_per_agent": [
+      2986.6666666666665,
+      4973.333333333333,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "total_bytes_per_agent": [
+      112000,
+      186500,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bytes_generated_total": 303100,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 300300,
+    "steps_buffer_nonempty_frac": [
+      0.6766666666666666,
+      0.9566666666666667,
+      0.54,
+      0.5366666666666666,
+      0.57,
+      0.5933333333333334
+    ],
+    "steps_base_in_range_frac": [
+      1.0,
+      1.0,
+      0.9766666666666667,
+      1.0,
+      1.0,
+      0.9966666666666667
+    ],
+    "steps_comm_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.6733333333333333,
+      0.9533333333333334,
+      0.5366666666666666,
+      0.5366666666666666,
+      0.57,
+      0.59
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 9.810833232402802,
+    "total_buffer_bytes_time_avg": 3348.3333333333335,
+    "r_task_total": 200.0,
+    "r_delivery_total": 5970.0,
+    "r_gen_total": 3031.0,
+    "r_aoi_total": -148.42499999999998,
+    "r_energy_total": -4.79544,
+    "r_shaping_total": -12.982664966583249,
+    "r_sense_total": 12.0,
+    "r_idle_total": -0.2,
+    "r_mode_total": -280.5,
+    "r_base_total": 1154.0,
+    "r_buffer_total": -502.25000000000017,
+    "mean_energy_j": 503.79918670654297,
+    "min_energy_j": 153.9977569580078,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 10
+    }
+  },
+  {
+    "seed": 1,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 70.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 70.0,
+    "throughput_bps": 11453.333333333334,
+    "mean_aoi_steps": 230.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 116.45666666666666,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 429500,
+    "throughput_bps_per_agent": [
+      1992.0,
+      2021.3333333333333,
+      1496.0,
+      1973.3333333333333,
+      1946.6666666666667,
+      2024.0
+    ],
+    "total_bytes_per_agent": [
+      74700,
+      75800,
+      56100,
+      74000,
+      73000,
+      75900
+    ],
+    "bytes_generated_total": 431500,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 24900,
+    "steps_buffer_nonempty_frac": [
+      0.49333333333333335,
+      0.5033333333333333,
+      0.49666666666666665,
+      0.49666666666666665,
+      0.49,
+      0.5
+    ],
+    "steps_base_in_range_frac": [
+      0.9933333333333333,
+      1.0,
+      0.8666666666666667,
+      0.9466666666666667,
+      1.0,
+      1.0
+    ],
+    "steps_comm_to_base_frac": [
+      0.9866666666666667,
+      1.0,
+      0.7333333333333333,
+      0.9433333333333334,
+      1.0,
+      1.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.9933333333333333,
+      1.0,
+      0.8666666666666667,
+      0.9466666666666667,
+      1.0,
+      1.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.49,
+      0.5,
+      0.49666666666666665,
+      0.49666666666666665,
+      0.4866666666666667,
+      0.49666666666666665
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 20.085546095371246,
+    "total_buffer_bytes_time_avg": 1593.6666666666667,
+    "r_task_total": 400.0,
+    "r_delivery_total": 8590.0,
+    "r_gen_total": 4315.0,
+    "r_aoi_total": -174.685,
+    "r_energy_total": -4.6951200000000135,
+    "r_shaping_total": -37.90176694393158,
+    "r_sense_total": 24.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -403.0,
+    "r_base_total": 845.0,
+    "r_buffer_total": -239.0499999999999,
+    "mean_energy_j": 587.3998107910156,
+    "min_energy_j": 555.3997802734375,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 1
+    }
+  },
+  {
+    "seed": 2,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 20.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 10986.666666666666,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 56.233333333333334,
+    "p95_aoi_time_avg": 74.28,
+    "total_bytes_delivered": 412000,
+    "throughput_bps_per_agent": [
+      1682.6666666666667,
+      1834.6666666666667,
+      1440.0,
+      1786.6666666666667,
+      1640.0,
+      2602.6666666666665
+    ],
+    "total_bytes_per_agent": [
+      63100,
+      68800,
+      54000,
+      67000,
+      61500,
+      97600
+    ],
+    "bytes_generated_total": 414300,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 45300,
+    "steps_buffer_nonempty_frac": [
+      0.48,
+      0.4866666666666667,
+      0.51,
+      0.4866666666666667,
+      0.47,
+      0.5833333333333334
+    ],
+    "steps_base_in_range_frac": [
+      0.8866666666666667,
+      0.9,
+      0.8433333333333334,
+      0.9066666666666666,
+      0.9,
+      1.0
+    ],
+    "steps_comm_to_base_frac": [
+      0.8533333333333334,
+      0.8933333333333333,
+      0.7066666666666667,
+      0.8933333333333333,
+      0.86,
+      1.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.8866666666666667,
+      0.9,
+      0.8433333333333334,
+      0.9066666666666666,
+      0.9,
+      1.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.48,
+      0.48333333333333334,
+      0.51,
+      0.48333333333333334,
+      0.47,
+      0.58
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 19.43410176753998,
+    "total_buffer_bytes_time_avg": 1836.6666666666667,
+    "r_task_total": 200.0,
+    "r_delivery_total": 8240.0,
+    "r_gen_total": 4143.0,
+    "r_aoi_total": -84.34999999999998,
+    "r_energy_total": -4.685440009155278,
+    "r_shaping_total": -19.345356512069678,
+    "r_sense_total": 12.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -318.0,
+    "r_base_total": 800.0,
+    "r_buffer_total": -275.49999999999994,
+    "mean_energy_j": 595.4664001464844,
+    "min_energy_j": 501.59967041015625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 2
+    }
+  },
+  {
+    "seed": 3,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 10325.333333333334,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 45.21666666666667,
+    "p95_aoi_time_avg": 54.653333333333336,
+    "total_bytes_delivered": 387200,
+    "throughput_bps_per_agent": [
+      1690.6666666666667,
+      1874.6666666666667,
+      1642.6666666666667,
+      1741.3333333333333,
+      1736.0,
+      1640.0
+    ],
+    "total_bytes_per_agent": [
+      63400,
+      70300,
+      61600,
+      65300,
+      65100,
+      61500
+    ],
+    "bytes_generated_total": 388700,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 20100,
+    "steps_buffer_nonempty_frac": [
+      0.45,
+      0.47333333333333333,
+      0.44333333333333336,
+      0.46,
+      0.45,
+      0.44666666666666666
+    ],
+    "steps_base_in_range_frac": [
+      0.89,
+      0.9533333333333334,
+      0.8733333333333333,
+      0.8766666666666667,
+      0.8833333333333333,
+      0.8833333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      0.8833333333333333,
+      0.94,
+      0.8666666666666667,
+      0.87,
+      0.8766666666666667,
+      0.8766666666666667
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.89,
+      0.9533333333333334,
+      0.8733333333333333,
+      0.8766666666666667,
+      0.8833333333333333,
+      0.8833333333333333
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.44666666666666666,
+      0.47,
+      0.44,
+      0.46,
+      0.45,
+      0.44666666666666666
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 17.64886611143748,
+    "total_buffer_bytes_time_avg": 1579.0,
+    "r_task_total": 400.0,
+    "r_delivery_total": 7744.0,
+    "r_gen_total": 3887.0,
+    "r_aoi_total": -67.82499999999999,
+    "r_energy_total": -4.654439995422374,
+    "r_shaping_total": -13.69388692378995,
+    "r_sense_total": 24.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -345.5,
+    "r_base_total": 748.0,
+    "r_buffer_total": -236.84999999999985,
+    "mean_energy_j": 621.2994079589844,
+    "min_energy_j": 585.9988403320312,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 3
+    }
+  },
+  {
+    "seed": 4,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 9128.0,
+    "mean_aoi_steps": 195.0,
+    "p95_aoi_steps": 289.5,
+    "mean_aoi_time_avg": 99.83333333333333,
+    "p95_aoi_time_avg": 145.185,
+    "total_bytes_delivered": 342300,
+    "throughput_bps_per_agent": [
+      1018.6666666666666,
+      994.6666666666666,
+      1562.6666666666667,
+      1208.0,
+      3557.3333333333335,
+      786.6666666666666
+    ],
+    "total_bytes_per_agent": [
+      38200,
+      37300,
+      58600,
+      45300,
+      133400,
+      29500
+    ],
+    "bytes_generated_total": 343800,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 105600,
+    "steps_buffer_nonempty_frac": [
+      0.4766666666666667,
+      0.4766666666666667,
+      0.43,
+      0.4866666666666667,
+      0.6866666666666666,
+      0.48
+    ],
+    "steps_base_in_range_frac": [
+      0.5466666666666666,
+      0.54,
+      0.86,
+      0.6566666666666666,
+      1.0,
+      0.42333333333333334
+    ],
+    "steps_comm_to_base_frac": [
+      0.54,
+      0.53,
+      0.85,
+      0.62,
+      1.0,
+      0.4
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.5466666666666666,
+      0.54,
+      0.86,
+      0.6566666666666666,
+      1.0,
+      0.42333333333333334
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.47333333333333333,
+      0.47333333333333333,
+      0.43,
+      0.48333333333333334,
+      0.6866666666666666,
+      0.48
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 31.030228579839072,
+    "total_buffer_bytes_time_avg": 2198.0,
+    "r_task_total": 400.0,
+    "r_delivery_total": 6846.0,
+    "r_gen_total": 3438.0,
+    "r_aoi_total": -149.75000000000003,
+    "r_energy_total": -4.688920009155287,
+    "r_shaping_total": -29.20300402641292,
+    "r_sense_total": 26.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -302.5,
+    "r_base_total": 612.0,
+    "r_buffer_total": -329.70000000000044,
+    "mean_energy_j": 592.5652872721354,
+    "min_energy_j": 378.3941650390625,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 4
+    }
+  },
+  {
+    "seed": 5,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 70.0,
+    "task_sensed_pct": 20.0,
+    "user_coverage_pct": 70.0,
+    "throughput_bps": 11178.666666666666,
+    "mean_aoi_steps": 180.0,
+    "p95_aoi_steps": 285.0,
+    "mean_aoi_time_avg": 98.375,
+    "p95_aoi_time_avg": 144.34,
+    "total_bytes_delivered": 419200,
+    "throughput_bps_per_agent": [
+      1517.3333333333333,
+      1650.6666666666667,
+      1549.3333333333333,
+      1722.6666666666667,
+      3208.0,
+      1530.6666666666667
+    ],
+    "total_bytes_per_agent": [
+      56900,
+      61900,
+      58100,
+      64600,
+      120300,
+      57400
+    ],
+    "bytes_generated_total": 421800,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 68000,
+    "steps_buffer_nonempty_frac": [
+      0.5433333333333333,
+      0.53,
+      0.51,
+      0.54,
+      0.68,
+      0.5433333333333333
+    ],
+    "steps_base_in_range_frac": [
+      0.69,
+      0.76,
+      0.7433333333333333,
+      0.81,
+      0.9966666666666667,
+      0.6766666666666666
+    ],
+    "steps_comm_to_base_frac": [
+      0.6633333333333333,
+      0.74,
+      0.7266666666666667,
+      0.7766666666666666,
+      0.9933333333333333,
+      0.6466666666666666
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.69,
+      0.76,
+      0.7433333333333333,
+      0.81,
+      0.9966666666666667,
+      0.6766666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.54,
+      0.53,
+      0.5066666666666667,
+      0.54,
+      0.6766666666666666,
+      0.54
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 21.42406824270884,
+    "total_buffer_bytes_time_avg": 2301.3333333333335,
+    "r_task_total": 200.0,
+    "r_delivery_total": 8384.0,
+    "r_gen_total": 4218.0,
+    "r_aoi_total": -147.56250000000003,
+    "r_energy_total": -4.710360004577645,
+    "r_shaping_total": -14.931585550308213,
+    "r_sense_total": 12.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -302.5,
+    "r_base_total": 796.0,
+    "r_buffer_total": -345.19999999999965,
+    "mean_energy_j": 574.6996663411459,
+    "min_energy_j": 427.998779296875,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 5
+    }
+  },
+  {
+    "seed": 6,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 50.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 9349.333333333334,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 45.85,
+    "p95_aoi_time_avg": 58.68,
+    "total_bytes_delivered": 350600,
+    "throughput_bps_per_agent": [
+      2658.6666666666665,
+      1048.0,
+      1176.0,
+      1368.0,
+      1402.6666666666667,
+      1696.0
+    ],
+    "total_bytes_per_agent": [
+      99700,
+      39300,
+      44100,
+      51300,
+      52600,
+      63600
+    ],
+    "bytes_generated_total": 353100,
+    "bytes_dropped_total": 2000,
+    "bytes_relayed_total": 64800,
+    "steps_buffer_nonempty_frac": [
+      0.5633333333333334,
+      0.41333333333333333,
+      0.4,
+      0.41,
+      0.4033333333333333,
+      0.46
+    ],
+    "steps_base_in_range_frac": [
+      0.98,
+      0.62,
+      0.6966666666666667,
+      0.7733333333333333,
+      0.8166666666666667,
+      0.7966666666666666
+    ],
+    "steps_comm_to_base_frac": [
+      0.9733333333333334,
+      0.5733333333333334,
+      0.6466666666666666,
+      0.7533333333333333,
+      0.8,
+      0.7833333333333333
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.98,
+      0.62,
+      0.6966666666666667,
+      0.7733333333333333,
+      0.8166666666666667,
+      0.7966666666666666
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.5633333333333334,
+      0.41,
+      0.39666666666666667,
+      0.4066666666666667,
+      0.4033333333333333,
+      0.45666666666666667
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 26.147530784606932,
+    "total_buffer_bytes_time_avg": 1769.3333333333333,
+    "r_task_total": 500.0,
+    "r_delivery_total": 7012.0,
+    "r_gen_total": 3531.0,
+    "r_aoi_total": -68.77499999999996,
+    "r_energy_total": -4.672920018310557,
+    "r_shaping_total": -12.985990905761712,
+    "r_sense_total": 30.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -298.0,
+    "r_base_total": 649.0,
+    "r_buffer_total": -265.39999999999986,
+    "mean_energy_j": 605.8993326822916,
+    "min_energy_j": 491.3983154296875,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 6
+    }
+  },
+  {
+    "seed": 7,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 50.0,
+    "task_sensed_pct": 40.0,
+    "user_coverage_pct": 50.0,
+    "throughput_bps": 10872.0,
+    "mean_aoi_steps": 210.0,
+    "p95_aoi_steps": 300.0,
+    "mean_aoi_time_avg": 105.52166666666666,
+    "p95_aoi_time_avg": 150.5,
+    "total_bytes_delivered": 407700,
+    "throughput_bps_per_agent": [
+      1960.0,
+      1157.3333333333333,
+      2826.6666666666665,
+      1013.3333333333334,
+      1901.3333333333333,
+      2013.3333333333333
+    ],
+    "total_bytes_per_agent": [
+      73500,
+      43400,
+      106000,
+      38000,
+      71300,
+      75500
+    ],
+    "bytes_generated_total": 409200,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 67700,
+    "steps_buffer_nonempty_frac": [
+      0.5,
+      0.47333333333333333,
+      0.6,
+      0.47,
+      0.47333333333333333,
+      0.49666666666666665
+    ],
+    "steps_base_in_range_frac": [
+      0.9633333333333334,
+      0.8,
+      1.0,
+      0.7733333333333333,
+      1.0,
+      1.0
+    ],
+    "steps_comm_to_base_frac": [
+      0.9466666666666667,
+      0.6,
+      1.0,
+      0.5466666666666666,
+      1.0,
+      1.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.9633333333333334,
+      0.8,
+      1.0,
+      0.7733333333333333,
+      1.0,
+      1.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.5,
+      0.47333333333333333,
+      0.5966666666666667,
+      0.4666666666666667,
+      0.47,
+      0.49666666666666665
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 23.876630148887635,
+    "total_buffer_bytes_time_avg": 1648.3333333333333,
+    "r_task_total": 400.0,
+    "r_delivery_total": 8154.0,
+    "r_gen_total": 4092.0,
+    "r_aoi_total": -158.2825,
+    "r_energy_total": -4.704920000000012,
+    "r_shaping_total": -40.4530714988709,
+    "r_sense_total": 24.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -386.5,
+    "r_base_total": 769.0,
+    "r_buffer_total": -247.24999999999994,
+    "mean_energy_j": 579.2330932617188,
+    "min_energy_j": 488.0001220703125,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 7
+    }
+  },
+  {
+    "seed": 8,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 80.0,
+    "task_sensed_pct": 50.0,
+    "user_coverage_pct": 80.0,
+    "throughput_bps": 9648.0,
+    "mean_aoi_steps": 120.0,
+    "p95_aoi_steps": 147.0,
+    "mean_aoi_time_avg": 45.943333333333335,
+    "p95_aoi_time_avg": 55.35,
+    "total_bytes_delivered": 361800,
+    "throughput_bps_per_agent": [
+      1429.3333333333333,
+      2784.0,
+      1392.0,
+      1381.3333333333333,
+      1346.6666666666667,
+      1314.6666666666667
+    ],
+    "total_bytes_per_agent": [
+      53600,
+      104400,
+      52200,
+      51800,
+      50500,
+      49300
+    ],
+    "bytes_generated_total": 363800,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 62500,
+    "steps_buffer_nonempty_frac": [
+      0.47,
+      0.5933333333333334,
+      0.43666666666666665,
+      0.45666666666666667,
+      0.4666666666666667,
+      0.45666666666666667
+    ],
+    "steps_base_in_range_frac": [
+      0.79,
+      0.98,
+      0.7466666666666667,
+      0.72,
+      0.7366666666666667,
+      0.7366666666666667
+    ],
+    "steps_comm_to_base_frac": [
+      0.76,
+      0.9633333333333334,
+      0.74,
+      0.7066666666666667,
+      0.7233333333333334,
+      0.7233333333333334
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.79,
+      0.98,
+      0.7466666666666667,
+      0.72,
+      0.7366666666666667,
+      0.7366666666666667
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.4666666666666667,
+      0.59,
+      0.43666666666666665,
+      0.4533333333333333,
+      0.4633333333333333,
+      0.45666666666666667
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 22.26985408941905,
+    "total_buffer_bytes_time_avg": 1980.3333333333333,
+    "r_task_total": 500.0,
+    "r_delivery_total": 7236.0,
+    "r_gen_total": 3638.0,
+    "r_aoi_total": -68.91499999999998,
+    "r_energy_total": -4.683040000000014,
+    "r_shaping_total": -28.31061172485345,
+    "r_sense_total": 36.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -314.0,
+    "r_base_total": 674.0,
+    "r_buffer_total": -297.05000000000007,
+    "mean_energy_j": 597.4661560058594,
+    "min_energy_j": 462.798583984375,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 8
+    }
+  },
+  {
+    "seed": 9,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 100.0,
+    "task_sensed_pct": 80.0,
+    "user_coverage_pct": 100.0,
+    "throughput_bps": 8824.0,
+    "mean_aoi_steps": 0.0,
+    "p95_aoi_steps": 0.0,
+    "mean_aoi_time_avg": 11.84,
+    "p95_aoi_time_avg": 11.84,
+    "total_bytes_delivered": 330900,
+    "throughput_bps_per_agent": [
+      1408.0,
+      1605.3333333333333,
+      2085.3333333333335,
+      1181.3333333333333,
+      1240.0,
+      1304.0
+    ],
+    "total_bytes_per_agent": [
+      52800,
+      60200,
+      78200,
+      44300,
+      46500,
+      48900
+    ],
+    "bytes_generated_total": 332500,
+    "bytes_dropped_total": 400,
+    "bytes_relayed_total": 52400,
+    "steps_buffer_nonempty_frac": [
+      0.4,
+      0.41333333333333333,
+      0.49,
+      0.36333333333333334,
+      0.3566666666666667,
+      0.37666666666666665
+    ],
+    "steps_base_in_range_frac": [
+      0.7633333333333333,
+      0.7733333333333333,
+      0.9566666666666667,
+      0.8266666666666667,
+      0.7333333333333333,
+      0.7533333333333333
+    ],
+    "steps_comm_to_base_frac": [
+      0.7366666666666667,
+      0.7533333333333333,
+      0.9133333333333333,
+      0.7833333333333333,
+      0.7,
+      0.72
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.7633333333333333,
+      0.7733333333333333,
+      0.9566666666666667,
+      0.8266666666666667,
+      0.7333333333333333,
+      0.7533333333333333
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.39666666666666667,
+      0.41333333333333333,
+      0.49,
+      0.36333333333333334,
+      0.3566666666666667,
+      0.37333333333333335
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 26.442944238185884,
+    "total_buffer_bytes_time_avg": 1584.0,
+    "r_task_total": 800.0,
+    "r_delivery_total": 6618.0,
+    "r_gen_total": 3325.0,
+    "r_aoi_total": -17.759999999999998,
+    "r_energy_total": -4.411239995422375,
+    "r_shaping_total": -7.323041653633123,
+    "r_sense_total": 48.0,
+    "r_idle_total": -0.6000000000000001,
+    "r_mode_total": -261.0,
+    "r_base_total": 600.0,
+    "r_buffer_total": -237.5999999999998,
+    "mean_energy_j": 823.9656575520834,
+    "min_energy_j": 648.1998901367188,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 9
+    }
+  },
+  {
+    "seed": 10,
+    "method": "greedy",
+    "steps": 300,
+    "task_completion_pct": 50.0,
+    "task_sensed_pct": 30.0,
+    "user_coverage_pct": 50.0,
+    "throughput_bps": 13066.666666666666,
+    "mean_aoi_steps": 168.0,
+    "p95_aoi_steps": 282.0,
+    "mean_aoi_time_avg": 85.675,
+    "p95_aoi_time_avg": 142.34,
+    "total_bytes_delivered": 490000,
+    "throughput_bps_per_agent": [
+      2066.6666666666665,
+      2325.3333333333335,
+      2101.3333333333335,
+      2010.6666666666667,
+      2162.6666666666665,
+      2400.0
+    ],
+    "total_bytes_per_agent": [
+      77500,
+      87200,
+      78800,
+      75400,
+      81100,
+      90000
+    ],
+    "bytes_generated_total": 493200,
+    "bytes_dropped_total": 0,
+    "bytes_relayed_total": 9900,
+    "steps_buffer_nonempty_frac": [
+      0.5433333333333333,
+      0.5566666666666666,
+      0.5466666666666666,
+      0.5133333333333333,
+      0.54,
+      0.5733333333333334
+    ],
+    "steps_base_in_range_frac": [
+      0.9766666666666667,
+      1.0,
+      0.9766666666666667,
+      0.9366666666666666,
+      1.0,
+      1.0
+    ],
+    "steps_comm_to_base_frac": [
+      0.9533333333333334,
+      1.0,
+      0.9533333333333334,
+      0.9333333333333333,
+      1.0,
+      1.0
+    ],
+    "steps_comm_send_to_base_frac": [
+      0.9766666666666667,
+      1.0,
+      0.9766666666666667,
+      0.9366666666666666,
+      1.0,
+      1.0
+    ],
+    "steps_move_toward_base_when_buffer_frac": [
+      0.54,
+      0.5533333333333333,
+      0.5433333333333333,
+      0.51,
+      0.5366666666666666,
+      0.57
+    ],
+    "steps_count": 300,
+    "mean_base_dist_time_avg": 17.253934615850447,
+    "total_buffer_bytes_time_avg": 1918.0,
+    "r_task_total": 300.0,
+    "r_delivery_total": 9800.0,
+    "r_gen_total": 4932.0,
+    "r_aoi_total": -128.5125,
+    "r_energy_total": -4.730519999999991,
+    "r_shaping_total": -20.200302195548975,
+    "r_sense_total": 18.0,
+    "r_idle_total": -0.30000000000000004,
+    "r_mode_total": -357.0,
+    "r_base_total": 963.0,
+    "r_buffer_total": -287.7000000000002,
+    "mean_energy_j": 557.8996887207031,
+    "min_energy_j": 541.9992065429688,
+    "alive_frac": 1.0,
+    "env_cfg": {
+      "map_xy_m": [
+        200.0,
+        200.0
+      ],
+      "horizon_steps": 300,
+      "dt_s": 1.0,
+      "num_agents": 6,
+      "num_tasks_total": 10,
+      "num_users_total": 10,
+      "spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "user_spawn_fracs": [
+        0.3,
+        0.5,
+        0.7
+      ],
+      "user_spawn_counts": [
+        2,
+        2,
+        2
+      ],
+      "visit_radius_m": 20.0,
+      "dwell_steps": 3,
+      "bytes_per_update": 700,
+      "update_period_steps": 12,
+      "user_cov_radius_m": 25.0,
+      "user_bytes_per_step": 500,
+      "user_speed_mps": 0.5,
+      "comm_range_m": 70.0,
+      "base_xy": [
+        100.0,
+        100.0
+      ],
+      "base_range_m": 40.0,
+      "link_capacity_bytes_per_step": 700,
+      "buffer_bytes_max": 2500,
+      "v_max_mps": 4.0,
+      "e0_j": 4500.0,
+      "move_cost_j_per_m": 3.0,
+      "sense_cost_j_per_step": 5.0,
+      "tx_cost_j_per_byte": 0.004,
+      "low_energy_j": 600.0,
+      "seed": 10
+    }
+  }
+]

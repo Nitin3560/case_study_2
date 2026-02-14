@@ -14,10 +14,12 @@ def build_env_cfg(env_yaml: dict, seed: int) -> EnvCfg:
     e = env_yaml["env"]
 
     spawn = e["task_spawn_schedule"]
+    users = e["user_spawn_schedule"]
     sensing = e["sensing"]
     comm = e["comm"]
     motion = e["motion"]
     energy = e["energy"]
+    user_cfg = e["users"]
 
     return EnvCfg(
         map_xy_m=tuple(e["map_xy_m"]),
@@ -25,12 +27,18 @@ def build_env_cfg(env_yaml: dict, seed: int) -> EnvCfg:
         dt_s=float(e["dt_s"]),
         num_agents=int(e["num_agents"]),
         num_tasks_total=int(e["num_tasks_total"]),
+        num_users_total=int(e["num_users_total"]),
         spawn_fracs=list(spawn["spawn_fracs"]),
         spawn_counts=list(spawn["spawn_counts"]),
+        user_spawn_fracs=list(users["spawn_fracs"]),
+        user_spawn_counts=list(users["spawn_counts"]),
         visit_radius_m=float(sensing["visit_radius_m"]),
         dwell_steps=int(sensing["dwell_steps"]),
         bytes_per_update=int(sensing["bytes_per_update"]),
         update_period_steps=int(sensing["update_period_steps"]),
+        user_cov_radius_m=float(user_cfg["cov_radius_m"]),
+        user_bytes_per_step=int(user_cfg["bytes_per_step"]),
+        user_speed_mps=float(user_cfg["speed_mps"]),
         comm_range_m=float(comm["comm_range_m"]),
         base_xy=tuple(comm["base_pos_xy"]),
         base_range_m=float(comm["base_range_m"]),

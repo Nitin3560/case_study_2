@@ -7,49 +7,49 @@ from case_study_2.controllers.comm_controller import hold, send_to_base
 
 class StaticBaseline:
     """
-    Static task allocation (round-robin) + direct-to-base if possible else hold.
-    This is intentionally weak but reproducible.
+    Fixed non-intelligent baseline:
+    - Each drone sticks to a predetermined location.
+    - Equal split between scan mode and communication mode.
+    - No adaptive task reassignment, no adaptive relay routing.
     """
 
     def __init__(self, num_agents: int, num_tasks: int):
         self.n = num_agents
         self.m = num_tasks
-        self.assign = {i: [] for i in range(self.n)}
-        for tid in range(self.m):
-            self.assign[tid % self.n].append(tid)
-        self.ptr = {i: 0 for i in range(self.n)}
+        self.step = 0
+        self.home = None
 
     def act(self, env) -> dict:
+        if self.home is None:
+            w, h = env.cfg.map_xy_m
+            grid_n = int(np.ceil(np.sqrt(max(self.n, 1))))
+            spacing_x = float(w) / float(grid_n + 1)
+            spacing_y = float(h) / float(grid_n + 1)
+            grid_points = []
+            for gy in range(grid_n):
+                for gx in range(grid_n):
+                    grid_points.append(
+                        np.array([(gx + 1) * spacing_x, (gy + 1) * spacing_y], dtype=np.float32)
+                    )
+            self.home = [grid_points[i % len(grid_points)] for i in range(self.n)]
+
         actions = {}
-        # env internals used only for baseline simplicity
         for i, name in enumerate(env.possible_agents):
-            # choose current assigned task if active & not done
-            task = self._pick_task(env, i)
-            task_choice = 0 if task is None else (task + 1)
+            # no task allocation in static baseline
+            task_choice = 0
 
-            # move towards chosen task if exists
-            if task is None:
-                move_dir = 0
+            # stick to predetermined home location
+            move_dir = move_towards(env.agent_pos[i], self.home[i])
+
+            # equal split between scan and comm phases
+            if self.step % 2 == 0:
+                mode = 0  # scan
+                comm = hold()
             else:
-                goal = env.tasks[task].pos_xy
-                move_dir = move_towards(env.agent_pos[i], goal)
+                mode = 1  # comm
+                base_in = np.linalg.norm(env.agent_pos[i] - env.base_xy) <= env.cfg.base_range_m
+                comm = send_to_base() if base_in else hold()
 
-            # comm: send to base if in range else hold
-            base_in = np.linalg.norm(env.agent_pos[i] - env.base_xy) <= env.cfg.base_range_m
-            comm = send_to_base() if base_in else hold()
-
-            actions[name] = np.array([task_choice, move_dir, comm], dtype=np.int32)
+            actions[name] = np.array([task_choice, move_dir, comm, mode], dtype=np.int32)
+        self.step += 1
         return actions
-
-    def _pick_task(self, env, i: int) -> int | None:
-        lst = self.assign[i]
-        if not lst:
-            return None
-        # advance ptr until we find an active, not completed task
-        for _ in range(len(lst)):
-            tid = lst[self.ptr[i] % len(lst)]
-            self.ptr[i] = (self.ptr[i] + 1) % len(lst)
-            t = env.tasks[tid]
-            if t.active and (not t.completed):
-                return tid
-        return None

@@ -1,0 +1,86 @@
+{
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "env_config": "/Users/nitin/Desktop/case_study_2/configs/env_easy.yaml",
+  "methods": [
+    "static",
+    "fixed_relay",
+    "greedy"
+  ],
+  "summary": {
+    "static": {
+      "task_completion_pct": [
+        0.0,
+        0.0
+      ],
+      "throughput_bps": [
+        674.6666666666666,
+        500.0753159649323
+      ],
+      "mean_aoi_steps": [
+        212.1220238095238,
+        9.91669402719721
+      ],
+      "mean_aoi_time_avg": [
+        106.14649206349208,
+        4.728954391871887
+      ]
+    },
+    "fixed_relay": {
+      "task_completion_pct": [
+        62.0,
+        23.75311613906246
+      ],
+      "throughput_bps": [
+        8616.533333333333,
+        1149.6589598557514
+      ],
+      "mean_aoi_steps": [
+        45.125,
+        87.55627889354487
+      ],
+      "mean_aoi_time_avg": [
+        28.015,
+        34.31393046954845
+      ]
+    },
+    "greedy": {
+      "task_completion_pct": [
+        80.5,
+        20.641042405337657
+      ],
+      "throughput_bps": [
+        12303.2,
+        1518.0508524562922
+      ],
+      "mean_aoi_steps": [
+        81.5,
+        80.49354338278188
+      ],
+      "mean_aoi_time_avg": [
+        32.43875,
+        30.186383561721264
+      ]
+    }
+  }
+}

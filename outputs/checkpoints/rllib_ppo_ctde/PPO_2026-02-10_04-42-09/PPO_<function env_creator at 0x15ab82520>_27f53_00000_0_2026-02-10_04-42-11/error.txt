@@ -1,0 +1,42 @@
+Failure # 1 (occurred at 2026-02-10_04-42-14)
+The actor died unexpectedly before finishing this task.
+	class_name: PPO
+	actor_id: 3cd3acc4c08bdd1571da389701000000
+	pid: 38152
+	namespace: 3dde5772-8319-4089-b7d7-719252352cee
+	ip: 127.0.0.1
+The actor is dead because its worker process has died. Worker exit type: SYSTEM_ERROR Worker exit detail: Worker exits unexpectedly. Worker exits with an exit code None. Traceback (most recent call last):
+  File "python/ray/_raylet.pyx", line 1715, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 1826, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 1722, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 1665, in ray._raylet.execute_task.function_executor
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/_private/function_manager.py", line 693, in actor_method_executor
+    return method(__ray_actor, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/util/tracing/tracing_helper.py", line 461, in _resume_span
+    return method(self, *_args, **_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 475, in __init__
+    self._env_id, self.env_creator = self._get_env_id_and_creator(
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 3486, in _get_env_id_and_creator
+    raise ValueError(
+ValueError: <function env_creator at 0x15236be20> is an invalid env specifier. You can specify a custom env as either a class (e.g., YourEnvCls) or a registered env id (e.g., "your_env").
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "python/ray/_raylet.pyx", line 2164, in ray._raylet.task_execution_handler
+  File "python/ray/_raylet.pyx", line 2023, in ray._raylet.execute_task_with_cancellation_handler
+  File "python/ray/_raylet.pyx", line 1667, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 1668, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 1917, in ray._raylet.execute_task
+  File "python/ray/_raylet.pyx", line 896, in ray._raylet.store_task_errors
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/util/tracing/tracing_helper.py", line 461, in _resume_span
+    return method(self, *_args, **_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 3993, in __repr__
+    if self.config.enable_rl_module_and_learner:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'enable_rl_module_and_learner'
+An unexpected internal error occurred while the worker was executing a task.

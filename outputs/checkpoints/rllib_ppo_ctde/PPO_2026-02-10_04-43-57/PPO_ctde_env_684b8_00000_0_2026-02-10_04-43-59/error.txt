@@ -1,0 +1,47 @@
+Failure # 1 (occurred at 2026-02-10_04-44-02)
+The actor died because of an error raised in its creation task, [36mray::PPO.__init__()[39m (pid=39703, ip=127.0.0.1, actor_id=2a0b5392f23adf9426a666e701000000, repr=PPO)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 579, in __init__
+    super().__init__(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 158, in __init__
+    self.setup(copy.deepcopy(self.config))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 825, in setup
+    self.env_runner_group = EnvRunnerGroup(
+                            ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 197, in __init__
+    self._setup(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 291, in _setup
+    self._local_env_runner = self._make_worker(
+                             ^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 1269, in _make_worker
+    return self.env_runner_cls(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 519, in __init__
+    self._update_policy_map(policy_dict=self.policy_dict)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 1729, in _update_policy_map
+    self._build_policy_map(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 1833, in _build_policy_map
+    new_policy = create_policy_for_framework(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/utils/policy.py", line 108, in create_policy_for_framework
+    return policy_class(observation_space, action_space, merged_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo_torch_policy.py", line 49, in __init__
+    TorchPolicyV2.__init__(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/policy/torch_policy_v2.py", line 88, in __init__
+    model, dist_class = self._init_model_and_dist_class()
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/policy/torch_policy_v2.py", line 452, in _init_model_and_dist_class
+    model = ModelCatalog.get_model_v2(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/models/catalog.py", line 555, in get_model_v2
+    raise e
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/models/catalog.py", line 529, in get_model_v2
+    instance = model_cls(
+               ^^^^^^^^^^
+  File "/Users/nitin/Desktop/case_study_2/utils/ctde.py", line 99, in __init__
+    obs_dim = int(obs_space["obs"].shape[0])
+                  ~~~~~~~~~^^^^^^^
+TypeError: 'Box' object is not subscriptable

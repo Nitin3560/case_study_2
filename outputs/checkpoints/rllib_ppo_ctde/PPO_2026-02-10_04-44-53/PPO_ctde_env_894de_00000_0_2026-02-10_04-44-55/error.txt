@@ -1,0 +1,51 @@
+Failure # 1 (occurred at 2026-02-10_04-44-58)
+The actor died because of an error raised in its creation task, [36mray::PPO.__init__()[39m (pid=43132, ip=127.0.0.1, actor_id=106022f1da9917ece559d7ad01000000, repr=PPO)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 579, in __init__
+    super().__init__(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 158, in __init__
+    self.setup(copy.deepcopy(self.config))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 825, in setup
+    self.env_runner_group = EnvRunnerGroup(
+                            ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 197, in __init__
+    self._setup(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 291, in _setup
+    self._local_env_runner = self._make_worker(
+                             ^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/env_runner_group.py", line 1269, in _make_worker
+    return self.env_runner_cls(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 519, in __init__
+    self._update_policy_map(policy_dict=self.policy_dict)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 1729, in _update_policy_map
+    self._build_policy_map(
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 1833, in _build_policy_map
+    new_policy = create_policy_for_framework(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/utils/policy.py", line 108, in create_policy_for_framework
+    return policy_class(observation_space, action_space, merged_config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo_torch_policy.py", line 64, in __init__
+    self._initialize_loss_from_dummy_batch()
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/policy/policy.py", line 1354, in _initialize_loss_from_dummy_batch
+    actions, state_outs, extra_outs = self.compute_actions_from_input_dict(
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/policy/torch_policy_v2.py", line 505, in compute_actions_from_input_dict
+    return self._compute_action_helper(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/utils/threading.py", line 24, in wrapper
+    return func(self, *a, **k)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/policy/torch_policy_v2.py", line 1075, in _compute_action_helper
+    dist_inputs, state_out = self.model(input_dict, state_batches, seq_lens)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/models/modelv2.py", line 257, in __call__
+    res = self.forward(restored, state or [], seq_lens)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nitin/Desktop/case_study_2/utils/ctde.py", line 125, in forward
+    obs = full[:, :obs_dim]
+                   ^^^^^^^
+NameError: name 'obs_dim' is not defined

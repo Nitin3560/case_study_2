@@ -1,0 +1,54 @@
+{
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "env_config": "/Users/nitin/Desktop/case_study_2/configs/env_easy.yaml",
+  "checkpoint": "/Users/nitin/Desktop/case_study_2/outputs/checkpoints/rllib_ppo_ctde/PPO_2026-02-13_05-43-10/PPO_ctde_env_2d0bb_00000_0_2026-02-13_05-43-12/checkpoint_000000",
+  "rllib": {
+    "task_completion_pct": [
+      74.5,
+      21.14486375359025
+    ],
+    "throughput_bps": [
+      11848.666666666666,
+      1871.2958889746878
+    ],
+    "mean_aoi_steps": [
+      164.65,
+      78.03054395218378
+    ]
+  },
+  "static": {
+    "task_completion_pct": [
+      0.0,
+      0.0
+    ],
+    "throughput_bps": [
+      674.6666666666666,
+      500.0753159649323
+    ],
+    "mean_aoi_steps": [
+      212.1220238095238,
+      9.91669402719721
+    ]
+  }
+}

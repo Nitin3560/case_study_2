@@ -1,0 +1,57 @@
+Failure # 1 (occurred at 2026-02-10_04-45-31)
+[36mray::PPO.train()[39m (pid=44833, ip=127.0.0.1, actor_id=18a228147c63f9809390bb5201000000, repr=PPO)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 331, in train
+    raise skipped from exception_cause(skipped)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 328, in train
+    result = self.step()
+             ^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 1247, in step
+    ) = self._run_one_training_iteration_old_api_stack()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 4366, in _run_one_training_iteration_old_api_stack
+    training_step_results = self.training_step()
+                            ^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo.py", line 394, in training_step
+    return self._training_step_old_api_stack()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo.py", line 483, in _training_step_old_api_stack
+    train_batch = synchronous_parallel_sample(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/execution/rollout_ops.py", line 102, in synchronous_parallel_sample
+    sampled_data = [worker_set.local_env_runner.sample(**random_action_kwargs)]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 679, in sample
+    batches = [self.input_reader.next()]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/sampler.py", line 59, in next
+    batches = [self.get_data()]
+               ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/sampler.py", line 225, in get_data
+    item = next(self._env_runner)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/env_runner_v2.py", line 330, in run
+    outputs = self.step()
+              ^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/env_runner_v2.py", line 349, in step
+    ) = self._base_env.poll()
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/multi_agent_env.py", line 529, in poll
+    ) = env_state.poll()
+        ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/multi_agent_env.py", line 716, in poll
+    self.reset()
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/multi_agent_env.py", line 800, in reset
+    raise e
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/multi_agent_env.py", line 794, in reset
+    obs_and_infos = self.env.reset(seed=seed, options=options)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/env/wrappers/pettingzoo_env.py", line 147, in reset
+    {self.env.agent_selection: self.env.observe(self.env.agent_selection)},
+     ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CTDEWrapper' object has no attribute 'agent_selection'

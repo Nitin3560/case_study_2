@@ -10,6 +10,7 @@ class Task:
     appears_step: int
     active: bool = False
     completed: bool = False
+    delivered: bool = False
     dwell_left: int = 0
 
     # AoI stream semantics: once active, generates periodic updates

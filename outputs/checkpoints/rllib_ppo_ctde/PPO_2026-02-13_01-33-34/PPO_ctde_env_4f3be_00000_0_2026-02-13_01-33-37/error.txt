@@ -1,0 +1,84 @@
+Failure # 1 (occurred at 2026-02-13_01-33-40)
+[36mray::PPO.train()[39m (pid=85015, ip=127.0.0.1, actor_id=e310a7b82608e60d70f3065801000000, repr=PPO)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 331, in train
+    raise skipped from exception_cause(skipped)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/tune/trainable/trainable.py", line 328, in train
+    result = self.step()
+             ^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 1247, in step
+    ) = self._run_one_training_iteration_old_api_stack()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/algorithm.py", line 4366, in _run_one_training_iteration_old_api_stack
+    training_step_results = self.training_step()
+                            ^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo.py", line 394, in training_step
+    return self._training_step_old_api_stack()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/algorithms/ppo/ppo.py", line 483, in _training_step_old_api_stack
+    train_batch = synchronous_parallel_sample(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/execution/rollout_ops.py", line 102, in synchronous_parallel_sample
+    sampled_data = [worker_set.local_env_runner.sample(**random_action_kwargs)]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/rollout_worker.py", line 679, in sample
+    batches = [self.input_reader.next()]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/sampler.py", line 59, in next
+    batches = [self.get_data()]
+               ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/sampler.py", line 225, in get_data
+    item = next(self._env_runner)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/env_runner_v2.py", line 330, in run
+    outputs = self.step()
+              ^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/env_runner_v2.py", line 356, in step
+    active_envs, to_eval, outputs = self._process_observations(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/evaluation/env_runner_v2.py", line 623, in _process_observations
+    processed = policy.agent_connectors(acd_list)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/connectors/agent/pipeline.py", line 40, in __call__
+    ret = c(ret)
+          ^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/connectors/connector.py", line 265, in __call__
+    return [self.transform(d) for d in acd_list]
+            ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/connectors/agent/obs_preproc.py", line 55, in transform
+    d[SampleBatch.NEXT_OBS] = self._preprocessor.transform(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/models/preprocessors.py", line 214, in transform
+    self.check_shape(observation)
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/site-packages/ray/rllib/models/preprocessors.py", line 72, in check_shape
+    raise ValueError(
+ValueError: Observation ([ 0.03658259 -0.02507204  1.         -1.         -1.          1.
+  0.          0.          0.          0.          0.          0.
+  0.          0.          0.          0.          0.          0.
+  0.          0.          0.          0.          0.          0.
+  0.          0.          0.          0.          0.          0.
+  0.          0.          0.          0.          0.          0.00457035
+  0.01203442  0.00368771 -0.01425869 -0.01693878  0.01935581  0.92643976
+  0.91584086  0.8530229   0.5182913   0.48746398  1.          0.
+ -1.          0.52197903  0.4732053   1.          0.         -1.
+  0.52286166  0.4994984   1.          0.         -1.          0.4687813
+  0.4921525   1.          0.         -1.          0.50135255  0.5068198
+  1.          0.         -1.          0.4754453   0.47231567  1.
+  0.         -1.          0.20798337  0.18133001  0.          0.
+  0.40942025  0.23038079  0.          0.          0.5340485   0.21017553
+  0.          0.          0.8489859   0.18809892  0.          0.
+  0.16756743  0.43008977  0.          0.          0.41013786  0.43583533
+  0.          0.          0.58619136  0.34072727  0.          0.
+  0.7955996   0.38216686  0.          0.          0.23101296  0.60774535
+  0.          0.          0.33476603  0.55219346  0.          0.
+  0.23535156  0.22719061  0.          0.37439024  0.19995806  0.
+  0.61782295  0.21873617  0.          0.8350497   0.21025942  0.
+  0.19620687  0.38964608  0.          0.44222972  0.30996582  0.
+  0.59445375  0.40132     0.          0.7429861   0.41331252  0.
+  0.17394876  0.6344978   0.          0.39497632  0.62676615  0.
+  0.5         0.5       ] dtype=float32) outside given space (Box(-1e+09, 1e+09, (106,), float32))!
