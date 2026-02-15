@@ -78,8 +78,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         self.step_i = 0
         self.agent_pos = np.zeros((self.n, 2), dtype=np.float32)
         self.agent_energy = np.zeros((self.n,), dtype=np.float32)
-        # Per-agent buffers as {task_id: bytes}
-        self.agent_buffer_bytes: list[dict[int, int]] = [dict() for _ in range(self.n)]
+        # Per-agent buffers as {stream_id: [[gen_step, bytes], ...]} (FIFO chunks).
+        self.agent_buffer_bytes: list[dict[int, list[list[int]]]] = [dict() for _ in range(self.n)]
         self.agent_task = -np.ones((self.n,), dtype=np.int32)  # -1 none
         self.prev_task_dist = np.zeros((self.n,), dtype=np.float32)
         self.prev_base_dist = np.zeros((self.n,), dtype=np.float32)
@@ -95,6 +95,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         self.user_last_received = [None for _ in range(cfg.num_users_total)]
         self.user_delivered = [False for _ in range(cfg.num_users_total)]
         self.reward_w = RewardWeights()
+        self.runtime_dropout_mask = np.zeros((self.n,), dtype=bool)
+        self.runtime_comm_scale = 1.0
 
         # spaces
         self._obs_space = self._make_obs_space()
@@ -140,6 +142,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         self.agent_task = -np.ones((self.n,), dtype=np.int32)
         self.prev_task_dist = np.zeros((self.n,), dtype=np.float32)
         self.prev_base_dist = np.linalg.norm(self.agent_pos - self.base_xy[None, :], axis=1).astype(np.float32)
+        self.runtime_dropout_mask = np.zeros((self.n,), dtype=bool)
+        self.runtime_comm_scale = 1.0
 
         # tasks with dynamic arrivals
         self.tasks = self._spawn_tasks()
@@ -148,6 +152,26 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         obs = {a: self._obs_for(i) for i, a in enumerate(self.agents)}
         infos = {a: {} for a in self.agents}
         return obs, infos
+
+    def set_runtime_faults(self, dropout_mask: np.ndarray | None = None, comm_scale: float = 1.0) -> None:
+        if dropout_mask is None:
+            self.runtime_dropout_mask = np.zeros((self.n,), dtype=bool)
+        else:
+            mask = np.asarray(dropout_mask, dtype=bool).reshape(-1)
+            if mask.shape[0] != self.n:
+                raise ValueError(f"dropout_mask length {mask.shape[0]} != num_agents {self.n}")
+            self.runtime_dropout_mask = mask.copy()
+        self.runtime_comm_scale = float(np.clip(comm_scale, 0.0, 1.0))
+
+    def _effective_comm_range_m(self) -> float:
+        return float(self.cfg.comm_range_m) * float(self.runtime_comm_scale)
+
+    def _effective_base_range_m(self) -> float:
+        return float(self.cfg.base_range_m) * float(self.runtime_comm_scale)
+
+    def _effective_link_capacity_bytes(self) -> int:
+        cap = int(round(float(self.cfg.link_capacity_bytes_per_step) * float(self.runtime_comm_scale)))
+        return max(0, cap)
 
     def _spawn_tasks(self) -> list[Task]:
         cfg = self.cfg
@@ -247,10 +271,15 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         bytes_generated_now = 0
         bytes_dropped_now = 0
         bytes_relayed_now = 0
+        delivered_latency_step_bytes_sum = 0.0
+        delivered_latency_bytes_now = 0
+        delivered_packet_latency_steps: list[float] = []
 
         # 1) task selection
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
+                continue
+            if self.runtime_dropout_mask[i]:
                 continue
             task_choice = int(act_arr[i, 0])
             if task_choice > 0:
@@ -262,6 +291,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         pre_nearest_task_dist = np.full((self.n,), np.nan, dtype=np.float32)
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
+                continue
+            if self.runtime_dropout_mask[i]:
                 continue
             tid = int(self.agent_task[i])
             if tid >= 0 and tid < len(self.tasks):
@@ -287,6 +318,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
                 continue
+            if self.runtime_dropout_mask[i]:
+                continue
             move_dir = int(act_arr[i, 1])
             delta = self._dir_to_delta(move_dir)
             # clamp by v_max * dt
@@ -304,6 +337,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         tasks_in_range: dict[int, bool] = {}
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
+                continue
+            if self.runtime_dropout_mask[i]:
                 continue
             tid = int(self.agent_task[i])
             task = None
@@ -378,6 +413,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
             for i in range(self.n):
                 if self.possible_agents[i] not in self.agents:
                     continue
+                if self.runtime_dropout_mask[i]:
+                    continue
                 # Mode is automatically derived from local buffer state.
                 mode = 1 if self._buffer_total(i) > 0 else 0  # 0=scan, 1=relay
                 if mode != 0:
@@ -394,6 +431,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
                 continue
+            if self.runtime_dropout_mask[i]:
+                continue
             comm = int(act_arr[i, 2])
             # Mode is automatically derived from local buffer state.
             mode = 1 if self._buffer_total(i) > 0 else 0  # 0=scan, 1=relay
@@ -402,7 +441,7 @@ class LawnTaskCommParallelEnv(ParallelEnv):
             if self._buffer_total(i) <= 0:
                 continue
 
-            capacity = int(self.cfg.link_capacity_bytes_per_step)
+            capacity = self._effective_link_capacity_bytes()
             send_bytes = self._buffer_take_limit(i, capacity)
             if send_bytes <= 0:
                 continue
@@ -412,15 +451,21 @@ class LawnTaskCommParallelEnv(ParallelEnv):
 
             if comm == 1:
                 # send to base if in range
-                if in_range(self.agent_pos[i], self.base_xy, self.cfg.base_range_m):
+                if in_range(self.agent_pos[i], self.base_xy, self._effective_base_range_m()):
                     delivered = self._buffer_take(i, send_bytes)
-                    sent_bytes = int(sum(delivered.values()))
+                    sent_bytes = int(sum(v["bytes"] for v in delivered.values()))
                     bytes_delivered_now += sent_bytes
                     per_agent_delivered[i] += sent_bytes
                     energy_used_j += tx_energy_j(self.cfg.tx_cost_j_per_byte, sent_bytes)
                     self.agent_energy[i] -= tx_energy_j(self.cfg.tx_cost_j_per_byte, sent_bytes)
                     # update AoI receive only for tasks whose updates were delivered
-                    for tid, b in delivered.items():
+                    for tid, payload in delivered.items():
+                        b = int(payload["bytes"])
+                        for gen_step, chunk_bytes in payload["chunks"]:
+                            delay_steps = float(max(0, self.step_i - int(gen_step)))
+                            delivered_packet_latency_steps.append(delay_steps)
+                            delivered_latency_step_bytes_sum += delay_steps * float(chunk_bytes)
+                            delivered_latency_bytes_now += int(chunk_bytes)
                         if b > 0:
                             if tid < self.cfg.num_tasks_total:
                                 self.tasks[tid].last_received_step = self.step_i
@@ -437,7 +482,7 @@ class LawnTaskCommParallelEnv(ParallelEnv):
             # send to neighbor k
             k = comm - 2
             if 0 <= k < self.n and k != i:
-                if in_range(self.agent_pos[i], self.agent_pos[k], self.cfg.comm_range_m):
+                if in_range(self.agent_pos[i], self.agent_pos[k], self._effective_comm_range_m()):
                     # limit by neighbor buffer space
                     space = int(self.cfg.buffer_bytes_max) - self._buffer_total(k)
                     send_bytes = min(send_bytes, self._buffer_take_limit(i, space))
@@ -445,7 +490,7 @@ class LawnTaskCommParallelEnv(ParallelEnv):
                         continue
                     delivered = self._buffer_take(i, send_bytes)
                     self._buffer_add_many(k, delivered)
-                    sent_bytes = int(sum(delivered.values()))
+                    sent_bytes = int(sum(v["bytes"] for v in delivered.values()))
                     bytes_relayed_now += sent_bytes
                     energy_used_j += tx_energy_j(self.cfg.tx_cost_j_per_byte, sent_bytes)
                     self.agent_energy[i] -= tx_energy_j(self.cfg.tx_cost_j_per_byte, sent_bytes)
@@ -470,6 +515,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         buffer_bytes_total = 0
         for i in range(self.n):
             if self.possible_agents[i] not in self.agents:
+                continue
+            if self.runtime_dropout_mask[i]:
                 continue
             # penalize staying still when tasks are active
             if int(act_arr[i, 1]) == 0 and any(t.active and (not t.completed) for t in self.tasks):
@@ -500,7 +547,7 @@ class LawnTaskCommParallelEnv(ParallelEnv):
                 prog_b = float(self.prev_base_dist[i] - post_base)
                 prog_b = float(np.clip(prog_b, -1.0, 1.0))
                 shaping += self.reward_w.k_base_prog * prog_b
-                if in_range(self.agent_pos[i], self.base_xy, self.cfg.base_range_m):
+                if in_range(self.agent_pos[i], self.base_xy, self._effective_base_range_m()):
                     base_ready += 1
             # mode is auto-derived; no action-based bad-mode penalty
         shaping = float(np.clip(shaping, -self.reward_w.shaping_clip, self.reward_w.shaping_clip))
@@ -530,7 +577,7 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         obs = {a: self._obs_for(i) for i, a in enumerate(self.agents)}
         infos = {}
         for i, a in enumerate(self.agents):
-            base_in = in_range(self.agent_pos[i], self.base_xy, self.cfg.base_range_m)
+            base_in = in_range(self.agent_pos[i], self.base_xy, self._effective_base_range_m())
             buf_nonempty = self._buffer_total(i) > 0
             comm = int(act_arr[i, 2])
             infos[a] = {
@@ -541,6 +588,9 @@ class LawnTaskCommParallelEnv(ParallelEnv):
                 "bytes_generated_now": int(bytes_generated_now),
                 "bytes_dropped_now": int(bytes_dropped_now),
                 "bytes_relayed_now": int(bytes_relayed_now),
+                "delivered_latency_step_bytes_sum": float(delivered_latency_step_bytes_sum),
+                "delivered_latency_bytes_now": int(delivered_latency_bytes_now),
+                "delivered_packet_latency_steps": [float(x) for x in delivered_packet_latency_steps],
                 "mean_aoi": mean_aoi,
                 "mean_task_dist_m": float(np.nanmean(pre_task_dist)) if np.any(~np.isnan(pre_task_dist)) else 0.0,
                 "mean_base_dist_m": float(np.mean(self.prev_base_dist)),
@@ -560,6 +610,8 @@ class LawnTaskCommParallelEnv(ParallelEnv):
                 "buffer_nonempty": bool(buf_nonempty),
                 "comm_to_base": bool(comm == 1 and base_in),
                 "comm_send_to_base_attempt": bool(comm == 1),
+                "agent_dropped": bool(self.runtime_dropout_mask[i]),
+                "comm_scale": float(self.runtime_comm_scale),
             }
 
         if done_time or dead:
@@ -591,13 +643,15 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         return d / n if n > 0 else d
 
     def _obs_for(self, i: int) -> np.ndarray:
+        if self.runtime_dropout_mask[i]:
+            return np.zeros(self._obs_space.shape, dtype=np.float32)
         cfg = self.cfg
         K = 5
         U = 3
         w, h = cfg.map_xy_m
         pos = self.agent_pos[i].astype(np.float32)
 
-        base_in = 1.0 if in_range(pos, self.base_xy, cfg.base_range_m) else 0.0
+        base_in = 1.0 if in_range(pos, self.base_xy, self._effective_base_range_m()) else 0.0
         energy = float(self.agent_energy[i]) / float(cfg.e0_j)
         buf = float(self._buffer_total(i)) / float(cfg.buffer_bytes_max)
         # clip to keep observation within Box bounds
@@ -665,13 +719,14 @@ class LawnTaskCommParallelEnv(ParallelEnv):
             if j == i:
                 continue
             d = float(np.linalg.norm(self.agent_pos[j] - pos))
-            if d <= float(cfg.comm_range_m):
+            if d <= self._effective_comm_range_m():
                 neighs.append((d, j))
         neighs = sorted(neighs, key=lambda x: x[0])[:N]
         for d, j in neighs:
             rel = (self.agent_pos[j] - pos) / np.array([w, h], dtype=np.float32)
             neigh_rels.extend([float(rel[0]), float(rel[1])])
-            linkq = 1.0 - (d / float(cfg.comm_range_m)) if cfg.comm_range_m > 0 else 0.0
+            eff_comm = self._effective_comm_range_m()
+            linkq = 1.0 - (d / eff_comm) if eff_comm > 0 else 0.0
             linkq = float(np.clip(linkq, 0.0, 1.0))
             neigh_linkq.append(linkq * 2.0 - 1.0)
 
@@ -727,9 +782,13 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         return float(np.mean(aois)) if aois else 0.0
 
     def _buffer_total(self, i: int) -> int:
-        return int(sum(self.agent_buffer_bytes[i].values()))
+        total = 0
+        for chunks in self.agent_buffer_bytes[i].values():
+            for _, b in chunks:
+                total += int(b)
+        return int(total)
 
-    def _buffer_add(self, i: int, tid: int, bytes_add: int) -> tuple[int, int]:
+    def _buffer_add(self, i: int, tid: int, bytes_add: int, gen_step: int | None = None) -> tuple[int, int]:
         if bytes_add <= 0:
             return 0, 0
         cur = self._buffer_total(i)
@@ -739,15 +798,22 @@ class LawnTaskCommParallelEnv(ParallelEnv):
         add = min(int(bytes_add), space)
         if add <= 0:
             return 0, int(bytes_add)
-        self.agent_buffer_bytes[i][tid] = int(self.agent_buffer_bytes[i].get(tid, 0) + add)
+        if gen_step is None:
+            gen_step = int(self.step_i)
+        chunks = self.agent_buffer_bytes[i].setdefault(int(tid), [])
+        if chunks and int(chunks[-1][0]) == int(gen_step):
+            chunks[-1][1] = int(chunks[-1][1]) + int(add)
+        else:
+            chunks.append([int(gen_step), int(add)])
         dropped = int(bytes_add - add)
         return int(add), dropped
 
-    def _buffer_add_many(self, i: int, delivered: dict[int, int]) -> None:
+    def _buffer_add_many(self, i: int, delivered: dict[int, dict]) -> None:
         if not delivered:
             return
-        for tid, b in delivered.items():
-            self._buffer_add(i, tid, b)
+        for tid, payload in delivered.items():
+            for gen_step, b in payload.get("chunks", []):
+                self._buffer_add(i, int(tid), int(b), gen_step=int(gen_step))
 
     def _mean_distances(self) -> tuple[float, float]:
         # retained for backward compatibility (not used in reward)
@@ -774,25 +840,39 @@ class LawnTaskCommParallelEnv(ParallelEnv):
             return 0
         return int(min(capacity, total_bytes))
 
-    def _buffer_take(self, i: int, take_bytes: int) -> dict[int, int]:
+    def _buffer_take(self, i: int, take_bytes: int) -> dict[int, dict]:
         """
-        Remove up to take_bytes from buffer across streams.
-        Returns {task_id: bytes_taken}.
+        Remove up to take_bytes from buffer across streams (FIFO per stream chunk order).
+        Returns {stream_id: {"bytes": int, "chunks": [[gen_step, bytes], ...]}}.
         """
         if take_bytes <= 0:
             return {}
-        delivered: dict[int, int] = {}
+        delivered: dict[int, dict] = {}
         # deterministic order
         for tid in sorted(self.agent_buffer_bytes[i].keys()):
             if take_bytes <= 0:
                 break
-            avail_bytes = int(self.agent_buffer_bytes[i].get(tid, 0))
-            if avail_bytes <= 0:
+            chunks = self.agent_buffer_bytes[i].get(tid, [])
+            if not chunks:
                 continue
-            use_bytes = int(min(avail_bytes, take_bytes))
-            self.agent_buffer_bytes[i][tid] = int(avail_bytes - use_bytes)
-            if self.agent_buffer_bytes[i][tid] <= 0:
+            out_chunks: list[list[int]] = []
+            sent = 0
+            while chunks and take_bytes > 0:
+                gen_step, avail = int(chunks[0][0]), int(chunks[0][1])
+                if avail <= 0:
+                    chunks.pop(0)
+                    continue
+                use = int(min(avail, take_bytes))
+                out_chunks.append([gen_step, use])
+                sent += use
+                take_bytes -= use
+                remain = int(avail - use)
+                if remain <= 0:
+                    chunks.pop(0)
+                else:
+                    chunks[0][1] = remain
+            if sent > 0:
+                delivered[int(tid)] = {"bytes": int(sent), "chunks": out_chunks}
+            if not chunks:
                 del self.agent_buffer_bytes[i][tid]
-            delivered[tid] = int(use_bytes)
-            take_bytes -= use_bytes
         return delivered

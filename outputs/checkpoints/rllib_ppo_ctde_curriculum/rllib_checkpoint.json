@@ -1,1 +1,0 @@
-{"type": "Algorithm", "checkpoint_version": "1.1", "format": "cloudpickle", "state_file": "/Users/nitin/Desktop/case_study_2/outputs/checkpoints/rllib_ppo_ctde_curriculum/algorithm_state.pkl", "policy_ids": ["shared"], "ray_version": "2.53.0", "ray_commit": "0de211850589aea71f842873bc32574c702ab492"}

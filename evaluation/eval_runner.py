@@ -15,6 +15,7 @@ from case_study_2.agents.marl_policy import MAPPOPolicy, PolicyConfig
 from case_study_2.controllers.motion_controller import move_towards
 import torch
 from case_study_2.utils.logger import JsonlLogger
+from case_study_2.evaluation.fault_injector import FaultConfig, FaultInjector
 
 
 def _repo_root() -> str:
@@ -186,6 +187,82 @@ def debug_deliver_policy(env) -> dict:
     return actions
 
 
+def neutral_action() -> np.ndarray:
+    return np.array([0, 0, 0, 0], dtype=np.int32)
+
+
+def _compute_tracking_error(env, dropout_mask: np.ndarray | None = None) -> float:
+    if dropout_mask is None:
+        online = np.ones((env.n,), dtype=bool)
+    else:
+        online = ~np.asarray(dropout_mask, dtype=bool)
+    agent_idx = np.where(online)[0]
+    if agent_idx.size == 0:
+        w, h = env.cfg.map_xy_m
+        return float(np.hypot(w, h))
+
+    errs: list[float] = []
+    for t in env.tasks:
+        if not t.active or t.completed:
+            continue
+        d = np.linalg.norm(env.agent_pos[agent_idx] - t.pos_xy[None, :], axis=1)
+        errs.append(float(np.min(d)))
+
+    for uid in range(env.cfg.num_users_total):
+        if not env.user_active[uid] or env.user_delivered[uid]:
+            continue
+        d = np.linalg.norm(env.agent_pos[agent_idx] - env.user_pos[uid][None, :], axis=1)
+        errs.append(float(np.min(d)))
+
+    return float(np.mean(errs)) if errs else 0.0
+
+
+def _compute_connectivity(env, comm_scale: float = 1.0, dropout_mask: np.ndarray | None = None) -> float:
+    online = np.ones((env.n,), dtype=bool)
+    if dropout_mask is not None:
+        online &= ~np.asarray(dropout_mask, dtype=bool)
+    online_idx = np.where(online)[0]
+    if online_idx.size == 0:
+        return 0.0
+
+    eff_base = float(env.cfg.base_range_m) * float(np.clip(comm_scale, 0.0, 1.0))
+    eff_comm = float(env.cfg.comm_range_m) * float(np.clip(comm_scale, 0.0, 1.0))
+    neigh = {i: set() for i in online_idx.tolist()}
+    for i in online_idx:
+        for j in online_idx:
+            if j <= i:
+                continue
+            if float(np.linalg.norm(env.agent_pos[i] - env.agent_pos[j])) <= eff_comm:
+                neigh[int(i)].add(int(j))
+                neigh[int(j)].add(int(i))
+
+    connected = 0
+    for i in online_idx:
+        if float(np.linalg.norm(env.agent_pos[i] - env.base_xy)) <= eff_base:
+            connected += 1
+            continue
+        seen = {int(i)}
+        stack = [int(i)]
+        ok = False
+        while stack:
+            cur = stack.pop()
+            if float(np.linalg.norm(env.agent_pos[cur] - env.base_xy)) <= eff_base:
+                ok = True
+                break
+            for nx in neigh[cur]:
+                if nx not in seen:
+                    seen.add(nx)
+                    stack.append(nx)
+        if ok:
+            connected += 1
+    return float(connected) / float(len(online_idx))
+
+
+def _window_mean(rows: list[dict], start: int, end: int, key: str) -> float:
+    vals = [float(r[key]) for r in rows if start <= int(r["t"]) < end]
+    return float(np.mean(vals)) if vals else 0.0
+
+
 def run_one(
     seed: int,
     method: str,
@@ -195,6 +272,10 @@ def run_one(
     timeseries_dir: str | None = None,
     stochastic: bool = False,
     use_heuristic: bool = False,
+    fault_injector: FaultInjector | None = None,
+    fault_action_wrapper: bool = False,
+    fault_log_steps: bool = False,
+    fault_window_steps: int = 50,
 ):
     if cfg_path_env is None:
         cfg_path_env = os.path.join(_repo_root(), "configs", "env.yaml")
@@ -269,6 +350,9 @@ def run_one(
     r_mode_total = 0.0
     r_base_total = 0.0
     r_buffer_total = 0.0
+    latency_bytes_weighted_sum_steps = 0.0
+    latency_delivered_bytes_total = 0
+    delivered_packet_latency_steps_all: list[float] = []
     ts_f = None
     if log_timeseries:
         if timeseries_dir is None:
@@ -276,10 +360,32 @@ def run_one(
         os.makedirs(timeseries_dir, exist_ok=True)
         ts_path = os.path.join(timeseries_dir, f"timeseries_{method}_seed{seed}.jsonl")
         ts_f = open(ts_path, "w", encoding="utf-8")
+    fault_step_logs: list[dict] = []
 
     for _ in range(cfg.horizon_steps):
+        t = int(env.step_i)
+        if fault_injector is not None:
+            sensor_mask = fault_injector.sensor_corrupt_mask(t)
+            dropout_mask = fault_injector.dropout_mask(t)
+            comm_scale = float(fault_injector.comm_scale(t))
+        else:
+            sensor_mask = np.zeros((cfg.num_agents,), dtype=bool)
+            dropout_mask = np.zeros((cfg.num_agents,), dtype=bool)
+            comm_scale = 1.0
+
+        env.set_runtime_faults(dropout_mask=dropout_mask, comm_scale=comm_scale)
+
+        obs_for_policy = {a: np.array(obs[a], copy=True) for a in env.agents}
+        for i, a in enumerate(env.agents):
+            if sensor_mask[i]:
+                n = fault_injector.sample_obs_noise(obs_for_policy[a].shape[0]) if fault_injector is not None else 0.0
+                b = fault_injector.sample_obs_bias(obs_for_policy[a].shape[0]) if fault_injector is not None else 0.0
+                obs_for_policy[a] = np.clip(obs_for_policy[a] + n + b, -1.0, 1.0).astype(np.float32)
+            if dropout_mask[i]:
+                obs_for_policy[a] = np.zeros_like(obs_for_policy[a], dtype=np.float32)
+
         if method in ("mappo", "mappo_full", "mappo_task_only", "mappo_routing_only") and policy is not None:
-            obs_batch = torch.tensor(np.stack([obs[a] for a in env.agents], axis=0), dtype=torch.float32)
+            obs_batch = torch.tensor(np.stack([obs_for_policy[a] for a in env.agents], axis=0), dtype=torch.float32)
             with torch.no_grad():
                 acts, _, _ = policy.act(obs_batch, deterministic=not stochastic)
             act_np = acts.cpu().numpy()
@@ -317,6 +423,13 @@ def run_one(
                 actions[a] = np.array([task, move, comm, mode], dtype=np.int32)
         else:
             actions = policy.act(env)
+
+        for i, a in enumerate(env.agents):
+            if dropout_mask[i]:
+                actions[a] = neutral_action()
+            elif fault_action_wrapper and sensor_mask[i]:
+                actions[a] = neutral_action()
+
         # track movement intent toward base when buffer is non-empty
         for i, a in enumerate(env.agents):
             act = actions.get(a)
@@ -329,6 +442,21 @@ def run_one(
                     steps_move_toward_base_when_buffer[i] += 1
 
         obs, rewards, terms, truncs, infos = env.step(actions)
+
+        if fault_injector is not None and fault_log_steps:
+            utility = float(next(iter(rewards.values()))) if rewards else 0.0
+            fault_step_logs.append({
+                "seed": seed,
+                "method": method,
+                "t": t,
+                "fault_type": fault_injector.fault_type,
+                "mean_tracking_error": _compute_tracking_error(env, dropout_mask=dropout_mask),
+                "connectivity": _compute_connectivity(env, comm_scale=comm_scale, dropout_mask=dropout_mask),
+                "dropout_mask": dropout_mask.astype(int).tolist(),
+                "sensor_mask": sensor_mask.astype(int).tolist(),
+                "comm_scale": float(comm_scale),
+                "utility": utility,
+            })
 
         # bytes delivered per-step is stored in infos (identical for all agents)
         if infos:
@@ -373,6 +501,9 @@ def run_one(
             bytes_generated_total += int(any_info.get("bytes_generated_now", 0))
             bytes_dropped_total += int(any_info.get("bytes_dropped_now", 0))
             bytes_relayed_total += int(any_info.get("bytes_relayed_now", 0))
+            latency_bytes_weighted_sum_steps += float(any_info.get("delivered_latency_step_bytes_sum", 0.0))
+            latency_delivered_bytes_total += int(any_info.get("delivered_latency_bytes_now", 0))
+            delivered_packet_latency_steps_all.extend([float(x) for x in any_info.get("delivered_packet_latency_steps", [])])
             mean_base_dist_sum += float(any_info.get("mean_base_dist_m", 0.0))
             total_buffer_bytes_sum += int(sum(env._buffer_total(i) for i in range(env.n)))
             r_task_total += float(any_info.get("r_task", 0.0))
@@ -394,6 +525,15 @@ def run_one(
                     "step": env.step_i,
                     "tasks_completed_now": int(any_info.get("tasks_completed_now", 0)),
                     "bytes_delivered_now": int(any_info.get("bytes_delivered_now", 0)),
+                    "throughput_bps_now": float(int(any_info.get("bytes_delivered_now", 0)) * 8.0 / float(cfg.dt_s)),
+                    "latency_ms_mean_now": float(
+                        (
+                            (float(any_info.get("delivered_latency_step_bytes_sum", 0.0)) / float(any_info.get("delivered_latency_bytes_now", 1)))
+                            * float(cfg.dt_s) * 1000.0
+                        )
+                        if int(any_info.get("delivered_latency_bytes_now", 0)) > 0 else 0.0
+                    ),
+                    "bytes_generated_now": int(any_info.get("bytes_generated_now", 0)),
                     "mean_aoi_steps": float(mean_aoi(env.tasks, env.step_i)),
                     "p95_aoi_steps": float(p95_aoi(env.tasks, env.step_i)),
                 }) + "\n")
@@ -425,6 +565,46 @@ def run_one(
     aoi_p95_time_avg = (sum_p95_aoi / steps_count) if steps_count > 0 else 0.0
     e_stats = remaining_energy_stats(env.agent_energy)
     thr_per_agent = throughput_bps_per_agent(bytes_per_agent, cfg.dt_s, env.step_i)
+    mean_delivery_latency_steps = (
+        float(latency_bytes_weighted_sum_steps) / float(latency_delivered_bytes_total)
+        if latency_delivered_bytes_total > 0 else 0.0
+    )
+    mean_delivery_latency_ms = float(mean_delivery_latency_steps * cfg.dt_s * 1000.0)
+    p95_delivery_latency_steps = (
+        float(np.percentile(np.array(delivered_packet_latency_steps_all, dtype=np.float32), 95.0))
+        if delivered_packet_latency_steps_all else 0.0
+    )
+    p95_delivery_latency_ms = float(p95_delivery_latency_steps * cfg.dt_s * 1000.0)
+    delivery_rate_pct = (
+        (float(total_bytes) / float(bytes_generated_total) * 100.0) if bytes_generated_total > 0 else 0.0
+    )
+    fault_summary = {}
+    if fault_injector is not None and fault_step_logs:
+        t0 = int(fault_injector.t0)
+        dur = int(fault_injector.duration)
+        win = int(max(1, fault_window_steps))
+        pre_err = _window_mean(fault_step_logs, t0 - win, t0, "mean_tracking_error")
+        post_err = _window_mean(fault_step_logs, t0 + dur, t0 + dur + win, "mean_tracking_error")
+        pre_conn = _window_mean(fault_step_logs, t0 - win, t0, "connectivity")
+        post_conn = _window_mean(fault_step_logs, t0 + dur, t0 + dur + win, "connectivity")
+        pre_util = _window_mean(fault_step_logs, t0 - win, t0, "utility")
+        post_util = _window_mean(fault_step_logs, t0 + dur, t0 + dur + win, "utility")
+        fault_summary = {
+            "fault_type": fault_injector.fault_type,
+            "fault_t0": t0,
+            "fault_duration": dur,
+            "fault_window_steps": win,
+            "pre_error": pre_err,
+            "post_error": post_err,
+            "post_vs_pre_error_pct": ((post_err - pre_err) / pre_err * 100.0) if pre_err > 1e-9 else 0.0,
+            "connectivity_pre": pre_conn,
+            "connectivity_post": post_conn,
+            "connectivity_pct": ((post_conn - pre_conn) / pre_conn * 100.0) if pre_conn > 1e-9 else 0.0,
+            "utility_pre": pre_util,
+            "utility_post": post_util,
+            "utility_delta": (post_util - pre_util),
+            "fault_step_logs": fault_step_logs,
+        }
 
     if ts_f is not None:
         ts_f.close()
@@ -445,6 +625,9 @@ def run_one(
         "p95_aoi_time_avg": aoi_p95_time_avg,
         "total_bytes_delivered": total_bytes,
         "throughput_bps_per_agent": thr_per_agent,
+        "delivery_rate_pct": delivery_rate_pct,
+        "mean_delivery_latency_ms": mean_delivery_latency_ms,
+        "p95_delivery_latency_ms": p95_delivery_latency_ms,
         "total_bytes_per_agent": bytes_per_agent,
         "bytes_generated_total": bytes_generated_total,
         "bytes_dropped_total": bytes_dropped_total,
@@ -470,6 +653,7 @@ def run_one(
         "r_buffer_total": r_buffer_total,
         **e_stats,
         "env_cfg": asdict(cfg),
+        **fault_summary,
     }
 
 
@@ -483,6 +667,13 @@ def main():
     ap.add_argument("--timeseries-dir", type=str, default=None)
     ap.add_argument("--seeds", type=str, default="1,2,3,4,5")
     ap.add_argument("--env-config", type=str, default=None)
+    ap.add_argument("--fault-type", choices=["none", "dropout", "sensor", "comm"], default="none")
+    ap.add_argument("--fault-t0", type=int, default=100)
+    ap.add_argument("--fault-duration", type=int, default=60)
+    ap.add_argument("--fault-severity", type=float, default=0.5)
+    ap.add_argument("--fault-action-wrapper", action="store_true")
+    ap.add_argument("--fault-log-steps", action="store_true")
+    ap.add_argument("--fault-window-steps", type=int, default=50)
     args = ap.parse_args()
 
     seeds = [int(s.strip()) for s in args.seeds.split(",") if s.strip()]
@@ -492,6 +683,19 @@ def main():
 
     results = []
     for seed in seeds:
+        fault_injector = None
+        if args.fault_type != "none":
+            env_yaml = load_yaml(args.env_config if args.env_config is not None else os.path.join(_repo_root(), "configs", "env.yaml"))
+            env_cfg = build_env_cfg(env_yaml, seed=seed)
+            fault_injector = FaultInjector(FaultConfig(
+                num_agents=env_cfg.num_agents,
+                horizon_steps=env_cfg.horizon_steps,
+                fault_type=args.fault_type,
+                t0=args.fault_t0,
+                duration=args.fault_duration,
+                severity=args.fault_severity,
+                seed=seed,
+            ))
         r = run_one(
             seed=seed,
             method=args.method,
@@ -501,6 +705,10 @@ def main():
             timeseries_dir=args.timeseries_dir,
             stochastic=args.stochastic,
             use_heuristic=args.use_heuristic,
+            fault_injector=fault_injector,
+            fault_action_wrapper=args.fault_action_wrapper,
+            fault_log_steps=args.fault_log_steps,
+            fault_window_steps=args.fault_window_steps,
         )
         results.append(r)
         logger.write(r)
